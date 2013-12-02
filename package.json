@@ -1,0 +1,26 @@
+{
+  "name": "loom-generators-ember",
+  "version": "1.0.1",
+  "description": "generator set use in ember-tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --require should  --ui bdd $(find test -name \"*.spec.js\")",
+    "watch-test": "node_modules/.bin/mocha -w --require should --reporter list --ui bdd $(find test -name \"*.spec.js\")"
+  },
+  "author": "Ryan Florence",
+  "license": "MIT",
+  "peerDependencies": {
+    "loom": "3.x.x"
+  },
+  "dependencies": {
+    "fleck": "~0.5.1",
+    "glob": "~3.2.6",
+    "fs-extra": "~0.6.4"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "should": "~1.2.2",
+    "sinon": "~1.7.3",
+    "loom-engine-hbs": "2.x.x"
+  }
+}
