@@ -8,6 +8,7 @@ var assignable = [
   'component',
   'controller',
   'mixin',
+  'transform',
   'model',
   'route',
   'serializer',
