@@ -45,7 +45,7 @@ App.UserNewRoute = require('./routes/user/new');
 
 ```js
 var esg = require('ember-stream-generator');
-var fs = require)('fs');
+var fs = require('fs');
 esg('path/to/app', 'path/to/optional/template.hbs').pipe(fs.createReadStream('output/path'));
 ```
 If no template path is given it defaults to
