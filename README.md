@@ -69,6 +69,3 @@ module.exports = App;
 ```
 
 Ripped out of [this project](https://github.com/rpflorence/loom-ember).
-
-Ripped out of [this project](https://github.com/rpflorence/loom-ember).
->>>>>>> 840ae96c636e9adc3cf4af78c8ff7ad2b0ec8193
