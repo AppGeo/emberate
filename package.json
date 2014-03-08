@@ -4,9 +4,17 @@
   "description": "streams!!!!",
   "license": "MIT",
   "main": "./lib",
+  "homepage": "https://github.com/AppGeo/ember-stream-generator",
+  "bugs": "https://github.com/AppGeo/ember-stream-generator/issues",
   "repository": {
     "type": "git",
     "url": "git://github.com/AppGeo/ember-stream-generator.git"
+  },
+  "keywords": {
+    "ember",
+    "emberjs",
+    "browserify",
+    "streams"
   },
   "dependencies": {
     "fleck": "^0.5.1",
