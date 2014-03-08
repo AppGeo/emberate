@@ -27,8 +27,10 @@ This generator set can be used to generate a file, along the lines of `.index.js
 // Start template code: Generated from template
 require('ember'); // get Ember global around for the templates
 require('./.templates');
+
 var routes = require('./config/routes');
 var App = require('./config/application');
+
 App.Router.map(routes);
 // End template code
 
@@ -43,29 +45,76 @@ App.UserNewRoute = require('./routes/user/new');
 
 ## Usage
 
+__Install__:
+
+```js
+npm install ember-stream-generator --save
+```
+
+
+__Available Options__:
+
+This stream takes three options `stream(path, appName, customTemplatePath)`.
+
+* __path__ - The path to the root of you client directory.
+* __appName__ - Name of your `Ember.Application` instance, e.g. `App.UserRoute`.
+* __customTemplatePath__ - Path to custom template, the default template is below.
+
+
+__Basic Example__:
+
+This stream should be used with other streams:
 ```js
 var esg = require('ember-stream-generator');
 var fs = require('fs');
-esg('path/to/app', 'path/to/optional/template.hbs').pipe(fs.createReadStream('output/path'));
+
+esg('./client/app').pipe(fs.createReadStream('./tmp/.index.js'));
 ```
-If no template path is given it defaults to
+
+
+__Default Template__: 
+
+If no template path is given, this is the default:
 
 ```
 // this file is auto-generated, do not edit
 
 require('ember'); // get Ember global around for the templates
 require('./.templates');
+
 var routes = require('./config/routes');
-var App = require('./config/application');
-App.Router.map(routes);
+var {{appName}} = require('./config/application');
+
+{{appName}}.Router.map(routes);
 
 {{#each helpers}}
 require('{{path}}');{{/each}}
 
 {{#each modules}}
-App.{{name}} = require('{{path}}');{{/each}}
+{{../appName}}.{{name}} = require('{{path}}');{{/each}}
 
-module.exports = App;
+module.exports = {{appName}};
 ```
 
-Ripped out of [this project](https://github.com/rpflorence/loom-ember).
+
+### Via Grunt
+
+```js
+  // creates a file with requires for App.* for ember
+  grunt.registerTask('build-index', function () {
+    var done = this.async();
+    var emberStream = require('ember-stream-generator');
+    var fs = require('fs');
+    var inStream = emberStream('./client');
+    var outStream = fs.createWriteStream('./client/.index.js');
+
+    outStream.on('finish', done);
+    inStream.pipe(outStream);
+  });
+```
+
+## Acknowledgment
+
+The concept and some of the code comes from Ryan Florence's [loom-ember][1].
+
+[1]: https://github.com/rpflorence/loom-ember
