@@ -10,12 +10,12 @@
     "type": "git",
     "url": "git://github.com/AppGeo/ember-stream-generator.git"
   },
-  "keywords": {
+  "keywords": [
     "ember",
     "emberjs",
     "browserify",
     "streams"
-  },
+  ],
   "dependencies": {
     "fleck": "^0.5.1",
     "readable-stream": "^1.0.26-2",
