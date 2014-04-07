@@ -1,5 +1,5 @@
-Ember Stream Generators
-==============================
+Ember Stream Generator
+======================
 
 This generator set is used to create an CJS `require` hierarchy for an EmberJS project structure.
 The main use-case, is for use with Browserify.  
@@ -42,6 +42,8 @@ App.UserRoute = require('./routes/user');
 App.UserNewRoute = require('./routes/user/new');
 // more ...
 ```
+
+_Note: The `config` directory is required, with the application definition in `config/application.js` and the router definition in `config/routes.js`. This also requires a `.templates.js` file in the root directory (this is a precompiled templates file, see [ember-template-compiler][compiler])._
 
 ## Usage
 
@@ -118,3 +120,4 @@ module.exports = {{appName}};
 The concept and some of the code comes from Ryan Florence's [loom-ember][1].
 
 [1]: https://github.com/rpflorence/loom-ember
+[compiler]: https://github.com/toranb/ember-template-compiler
