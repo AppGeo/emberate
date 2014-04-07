@@ -1,5 +1,5 @@
-Ember Stream Generators
-==============================
+Ember Stream Generator
+======================
 
 This generator set is used to create an CJS `require` hierarchy for an EmberJS project structure.
 The main use-case, is for use with Browserify.  
