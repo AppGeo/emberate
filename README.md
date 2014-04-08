@@ -115,6 +115,22 @@ module.exports = {{appName}};
   });
 ```
 
+### Via Gulp
+
+```js
+gulp.task('pre-browserify', function () {
+  var emberStream = require('ember-stream-generator');
+  var rename = require('gulp-rename');
+  var source = require('vinyl-source-stream');
+  var clientPath = './client/';
+  
+  emberStream(clientPath)
+    .pipe(source(clientPath))
+    .pipe(rename('.index.js'))
+    .pipe(gulp.dest(clientPath));
+});
+```
+
 ## Acknowledgment
 
 The concept and some of the code comes from Ryan Florence's [loom-ember][1].
