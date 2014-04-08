@@ -3,9 +3,6 @@
 require('ember'); // get Ember global around for the templates
 require('./.templates');
 
-{{#each initializers}}
-require('{{path}}');{{/each}}
-
 var routes = require('./config/routes');
 var {{appName}} = require('./config/application');
 
