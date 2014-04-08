@@ -103,7 +103,7 @@ module.exports = {{appName}};
 
 ```js
   // creates a file with requires for App.* for ember
-  grunt.registerTask('build-index', function () {
+  grunt.registerTask('pre-browserify', function () {
     var done = this.async();
     var emberStream = require('ember-stream-generator');
     var fs = require('fs');
@@ -118,6 +118,7 @@ module.exports = {{appName}};
 ### Via Gulp
 
 ```js
+// creates a file with requires for App.* for ember
 gulp.task('pre-browserify', function () {
   var emberStream = require('ember-stream-generator');
   var rename = require('gulp-rename');
