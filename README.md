@@ -1,6 +1,8 @@
 Ember Stream Generator
 ======================
 
+[![NPM][npm-badge-img][npm-badge-url]
+
 This generator set is used to create an CJS `require` hierarchy for an EmberJS project structure.
 The main use-case, is for use with Browserify.  
 For example, given the following structure:
@@ -138,3 +140,5 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][1].
 
 [1]: https://github.com/rpflorence/loom-ember
 [compiler]: https://github.com/toranb/ember-template-compiler
+[npm-badge-img]: https://nodei.co/npm/ember-stream-generator.svg?compact=true
+[npm-badge-url]: https://nodei.co/npm/ember-stream-generator/
