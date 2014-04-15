@@ -9,9 +9,8 @@ var App = require('./config/application');
 App.Router.map(routes);
 
 
-require('./controllers/application');
 
-
+App.ApplicationController = require('./controllers/application');
 App.ApplicationRoute = require('./routes/application');
 App.ApplicationView = require('./views/application');
 
