@@ -2,9 +2,10 @@ var esg = require('../lib'),
   fs = require('fs'),
   path = require('path'),
   test = require('tape'),
-  allStructure = path.resolve('test', 'structures', 'all'),
-  generatedFile = path.resolve('test', 'structures', 'all', '.index.js'),
-  expectedFile = path.resolve('test', 'structures', 'all-structures.js');
+  allStructure = path.resolve(__dirname, 'structures', 'all'),
+  generatedFile = path.resolve(__dirname, 'structures', 'all', '.index.js'),
+  expectedFile = path.resolve(__dirname, 'structures', 'all-structures.js');
+  console.log(__dirname);
 
 test('is a stream', function (t) {
   var instance = esg(allStructure);
