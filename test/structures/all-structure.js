@@ -10,6 +10,7 @@ App.Router.map(routes);
 
 
 
+
 App.ApplicationController = require('./controllers/application');
 App.ApplicationRoute = require('./routes/application');
 App.ApplicationView = require('./views/application');
