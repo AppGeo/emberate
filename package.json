@@ -16,6 +16,9 @@
     "browserify",
     "streams"
   ],
+  "scripts": {
+    "test": "node ./test/index.js | tap-spec"
+  },
   "dependencies": {
     "fleck": "^0.5.1",
     "readable-stream": "^1.0.26-2",
@@ -24,6 +27,7 @@
     "spider-stream": "^0.1.0"
   },
   "devDependencies": {
-    "tape": "^2.12.3"
+    "tape": "^2.12.3",
+    "tap-spec": "^0.1.8"
   }
 }
