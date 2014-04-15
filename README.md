@@ -1,4 +1,4 @@
-Ember Stream Generator
+Ember Stream Generator [![Build Status][travis-img]][travis-url]
 ======================
 
 [![NPM][npm-badge-img]][npm-badge-url]
@@ -140,5 +140,7 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][1].
 
 [1]: https://github.com/rpflorence/loom-ember
 [compiler]: https://github.com/toranb/ember-template-compiler
+[travis-url]: https://travis-ci.org/AppGeo/ember-stream-generator
+[travis-img]: https://travis-ci.org/AppGeo/ember-stream-generator.svg?branch=master
 [npm-badge-img]: https://nodei.co/npm/ember-stream-generator.svg?compact=true
 [npm-badge-url]: https://nodei.co/npm/ember-stream-generator/
