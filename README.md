@@ -1,7 +1,7 @@
 Ember Stream Generator
 ======================
 
-[![NPM][npm-badge-img][npm-badge-url]
+[![NPM][npm-badge-img]][npm-badge-url]
 
 This generator set is used to create an CJS `require` hierarchy for an EmberJS project structure.
 The main use-case, is for use with Browserify.  
