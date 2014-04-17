@@ -17,7 +17,7 @@
     "streams"
   ],
   "scripts": {
-    "test": "node ./test/index.js | tap-spec"
+    "test": "node ./test/index.js | tnyan"
   },
   "dependencies": {
     "fleck": "^0.5.1",
@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "tape": "^2.12.3",
-    "tap-spec": "^0.1.8"
+    "tap-nyan": "0.0.2"
   }
 }
