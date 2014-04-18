@@ -49,20 +49,12 @@ _Note: The `config` directory is required, with the application definition in `c
 
 ## Usage
 
+
 __Install__:
 
 ```js
-npm install ember-stream-generator --save
+npm install ember-stream-generator --save-dev
 ```
-
-
-__Available Options__:
-
-This stream takes three options `stream(path, appName, customTemplatePath)`.
-
-* __path__ - The path to the root of you client directory.
-* __appName__ - Name of your `Ember.Application` instance, e.g. `App.UserRoute`.
-* __customTemplatePath__ - Path to custom template, the default template is below.
 
 
 __Basic Example__:
@@ -75,33 +67,21 @@ var fs = require('fs');
 esg('./client/app').pipe(fs.createReadStream('./tmp/.index.js'));
 ```
 
+From here you can run browserify: `browserify ./client/.index.js --outfile ./dist/scripts/application.js`.
 
-__Default Template__: 
 
-If no template path is given, this is the default:
+__Available Options__:
 
-```
-// this file is auto-generated, do not edit
+This stream takes three options `stream(path, appName, customTemplatePath)`.
 
-require('ember'); // get Ember global around for the templates
-require('./.templates');
+* __path__ - The path to the root of you client directory.
+* __appName__ - Name of your `Ember.Application` instance, e.g. `App.UserRoute`.
+* __customTemplatePath__ - Path to custom template, the default template is [here][default-template].
 
-var routes = require('./config/routes');
-var {{appName}} = require('./config/application');
-
-{{appName}}.Router.map(routes);
-
-{{#each helpers}}
-require('{{path}}');{{/each}}
-
-{{#each modules}}
-{{../appName}}.{{name}} = require('{{path}}');{{/each}}
-
-module.exports = {{appName}};
-```
 
 
 ### Via Grunt
+
 
 ```js
   // creates a file with requires for App.* for ember
@@ -144,3 +124,4 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][1].
 [travis-img]: https://travis-ci.org/AppGeo/ember-stream-generator.svg?branch=master
 [npm-badge-img]: https://nodei.co/npm/ember-stream-generator.svg?compact=true
 [npm-badge-url]: https://nodei.co/npm/ember-stream-generator/
+[default-template]: https://github.com/AppGeo/ember-stream-generator/blob/master/lib/defaultTemplate.hbs
