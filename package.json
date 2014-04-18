@@ -1,6 +1,6 @@
 {
   "name": "ember-stream-generator",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "streams!!!!",
   "license": "MIT",
   "main": "./lib",
