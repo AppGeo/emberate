@@ -23,10 +23,9 @@ test('creates expected output', function (t) {
 
       t.notOk(err, 'No file reading errors');
       t.deepEqual(data, expected, 'Generated is same as expected');
+      t.end();
     });
   });
-
-  t.end();
 });
 
 test('works with required dirs/files only', function (t) {
@@ -40,8 +39,16 @@ test('works with required dirs/files only', function (t) {
       
       t.notOk(err, 'No file reading errors');
       t.deepEqual(data, expected, 'Generated is same as expected');
+      t.end();
     });
   });
+});
 
+test('inflector', function (t) {
+  var inflector = require('../lib/inflector');
+
+  t.deepEqual(inflector('test.js'), { cat: 'test', name: 'Test' }, 'inflects root file');
+  t.deepEqual(inflector('controllers/application.js'), { cat: 'controller', name: 'ApplicationController' }, 'inflects one level deep');
+  t.deepEqual(inflector('controllers/user/index.js'), { cat: 'controller', name: 'UserIndexController' }, 'inflects two levels deep');
   t.end();
 });

@@ -20,6 +20,7 @@ App.UserAdapter = require('./adapters/user');
 App.UserModel = require('./models/user');
 App.XPlayerComponent = require('./components/x-player');
 App.ApplicationController = require('./controllers/application');
+App.UserIndexController = require('./controllers/user/index');
 App.ApplicationRoute = require('./routes/application');
 App.ApplicationView = require('./views/application');
 
