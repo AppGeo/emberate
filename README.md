@@ -63,7 +63,7 @@ This stream should be used with other streams:
 var emberate = require('emberate');
 var fs = require('fs');
 
-emberate('./client/app').pipe(fs.createReadStream('./tmp/.index.js'));
+emberate('./client').pipe(fs.createReadStream('./tmp/.index.js'));
 ```
 
 From here you can run browserify: `browserify ./client/.index.js --outfile ./dist/scripts/application.js`.
@@ -72,12 +72,12 @@ From here you can run browserify: `browserify ./client/.index.js --outfile ./dis
 __Available Options__:
 
 * __path__ - The path to the root of your client directory.
-* __options__ - Optional options hash.
+* __options__ - optional, options hash with the available options listed below.
   - appName - 'App' by default, used as your application global.
   - templatePath - `lib/defaultTemplate.hbs` (in emberate project) by default.
   - pods - `false` by default
   - outPath - where to save the generated file (can only be used if specifying a done callaback after options).
-* callback - optional, returns once done writing, if used _outPath_ option above.
+* __callback__ - optional, returns once done writing, if used _outPath_ option above.
 
 **Options below are for backwards compatibility only, and do not work with PODS**  
 
