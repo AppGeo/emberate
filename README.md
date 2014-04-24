@@ -76,6 +76,8 @@ __Available Options__:
   - appName - 'App' by default, used as your application global.
   - templatePath - `lib/defaultTemplate.hbs` (in emberate project) by default.
   - pods - `false` by default
+  - outPath - where to save the generated file (can only be used if specifying a done callaback after options).
+* callback - optional, returns once done writing, if used _outPath_ option above.
 
 **Options below are for backwards compatibility only, and do not work with PODS**  
 
@@ -155,12 +157,10 @@ This requires the following structure in the `./client` folder:
   grunt.registerTask('pre-browserify', function () {
     var done = this.async();
     var emberate = require('emberate');
-    var fs = require('fs');
-    var inStream = emberate('./client');
-    var outStream = fs.createWriteStream('./client/.index.js');
-
-    outStream.on('finish', done);
-    inStream.pipe(outStream);
+    
+    emberate('./client', { outPath: './tmp/.index.js' }, function () {
+      done();  
+    });
   });
 ```
 

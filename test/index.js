@@ -27,7 +27,7 @@ test('creates expected output with callback', function (t) {
   var generatedFile = path.join(__dirname, 'structures', 'all', '.index.js');
   var expectedFile = path.join(__dirname, 'structures', 'all-structures.js');
   var instance = esg(allStructure, {
-    outpath: generatedFile
+    outPath: generatedFile
   }, function () {
     fs.readFile(generatedFile, function (err, data) {
       fs.readFile(expectedFile, function (err, expected){
