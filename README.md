@@ -90,6 +90,27 @@ This stream takes three options `stream(path, appName, customTemplatePath)`.
 
 When using PODS, you must use the new options syntax, see above.
 
+```no-highlight
+npm install --save-dev knownasilya/node-hbsfy#ember ember-template-compiler
+```
+_Note: PR for `hbsfy` has been submitted, jut waiting on response._
+
+Specify the following options in your `package.json`:
+
+```json
+{
+  "browserify": {
+    "transform": ["hbsfy"]
+  },
+  "hbsfy": {
+    "precompiler": "ember-template-compiler",
+    "compiler": "Ember.Handlebars"
+  }
+}
+```
+
+Run this before browserifying:
+
 ```js
 var emberate = require('emberate');
 
@@ -124,9 +145,6 @@ This requires the following structure in the `./client` folder:
       |_component.js
 ```
 
-And the use of `hbsfy` (PR not yet merged, install like so:
-`npm install --save-dev knownasilya/node-hbsfy#ember` for now..) for browserify,
-which should work with the default options.
 
 
 ### Via Grunt
