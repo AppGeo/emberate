@@ -4,17 +4,11 @@ var path = require('path');
 var test = require('tape');
 var allStructure = path.join(__dirname, 'structures', 'all');
 var minStructure = path.join(__dirname, 'structures', 'min');
-var generatedFile = path.join(__dirname, 'structures', 'all', '.index.js');
-var expectedFile = path.join(__dirname, 'structures', 'all-structures.js');
-
-test('is a stream', function (t) {
-  var instance = esg(allStructure);
-
-  t.equal(typeof instance.pipe, 'function'); 
-  t.end();
-});
+var podsAllStructure = path.join(__dirname, 'structures', 'pods-all');
 
 test('creates expected output', function (t) {
+  var generatedFile = path.join(__dirname, 'structures', 'all', '.index.js');
+  var expectedFile = path.join(__dirname, 'structures', 'all-structures.js');
   var instance = esg(allStructure).pipe(fs.createWriteStream(generatedFile));
 
   instance.on('finish', function () {
@@ -45,7 +39,19 @@ test('works with required dirs/files only', function (t) {
 });
 
 test('pods: all available items', function (t) {
-  t.end();
+  var expectedPodsAllFile = path.join(__dirname, 'structures', 'pods-all-structures.js');
+  var generatedPodsAllFile = path.join(__dirname, 'structures', 'pods-all', '.index.js');
+  var instance = esg(podsAllStructure, { pods: true }).pipe(fs.createWriteStream(generatedPodsAllFile));
+
+  instance.on('finish', function () {
+    fs.readFile(generatedPodsAllFile, function (err, data) {
+      var expected = fs.readFileSync(expectedPodsAllFile);
+      
+      t.notOk(err, 'No file reading errors');
+      t.deepEqual(data, expected, 'Generated is same as expected');
+      t.end();
+    });
+  });
 });
 
 test('inflector: by type', function (t) {
@@ -63,6 +69,7 @@ test('inflector: pods', function (t) {
   t.deepEqual(inflector('test.js', true), { cat: 'test', name: 'Test' }, 'inflects root file');
   t.deepEqual(inflector('pods/application/controller.js', true), { cat: 'controller', name: 'ApplicationController' }, 'inflects one level deep');
   t.deepEqual(inflector('pods/user/index/route.js', true), { cat: 'route', name: 'UserIndexRoute' }, 'inflects two levels deep');
+  t.deepEqual(inflector('pods/user/index/template.js', true), { cat: 'template', name: 'UserIndexTemplate' }, 'inflects two levels deep - template');
   t.deepEqual(inflector('app/mixins/ajax.js', true), { cat: 'mixin', name: 'AjaxMixin' }, 'inflects app level by type');
   t.end();
 });

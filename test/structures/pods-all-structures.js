@@ -2,23 +2,30 @@
 require('ember'); // get Ember global around for the templates
 require('./.templates');
 
-var App = require('./config/application');
-App.Router.map(require('./config/routes'));
+var App = require('./app/config/application');
+App.Resolver = Ember.DefaultResolver.extend({
+  resolveTemplate: function(parsedName) {
+    this.useRouterNaming(parsedName);
+    return this.resolveOther(parsedName);
+  }  
+});
+App.Router.map(require('./app/config/routes'));
 
 
-require('./helpers/ajax');
+require('./app/helpers/ajax');
 
 
-App.TestInitializer = require('./initializers/test');
-App.TestMixin = require('./mixins/test');
-App.ObjectTransform = require('./transforms/object');
-App.UserSerializer = require('./serializers/user');
-App.UserAdapter = require('./adapters/user');
-App.UserModel = require('./models/user');
-App.XPlayerComponent = require('./components/x-player');
-App.ApplicationController = require('./controllers/application');
-App.UserIndexController = require('./controllers/user/index');
-App.ApplicationRoute = require('./routes/application');
-App.ApplicationView = require('./views/application');
+App.ApplicationTemplate = require('./pods/application/template.hbs');
+App.TestInitializer = require('./app/initializers/test');
+App.TestMixin = require('./app/mixins/test');
+App.ObjectTransform = require('./app/transforms/object');
+App.UserSerializer = require('./app/serializers/user');
+App.UserAdapter = require('./app/adapters/user');
+App.UserModel = require('./app/models/user');
+App.XPlayerComponent = require('./components/x-player/component');
+App.UserIndexController = require('./pods/user/index/controller');
+App.ApplicationController = require('./pods/application/controller');
+App.ApplicationRoute = require('./pods/application/route');
+App.ApplicationView = require('./pods/application/view');
 
 module.exports = App;
