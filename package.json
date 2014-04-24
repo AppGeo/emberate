@@ -1,7 +1,7 @@
 {
   "name": "emberate",
-  "version": "0.3.7",
   "description": "go through a directory to make an ember index, it doesn't iterate, it emberates",
+  "version": "0.3.8",
   "license": "MIT",
   "main": "./lib",
   "homepage": "https://github.com/AppGeo/ember-stream-generator",
