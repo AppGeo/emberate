@@ -1,4 +1,4 @@
-Ember Stream Generator [![Build Status][travis-img]][travis-url]
+Emberate [![Build Status][travis-img]][travis-url]
 ======================
 
 [![NPM][npm-badge-img]][npm-badge-url]
