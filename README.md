@@ -74,7 +74,7 @@ __Available Options__:
 * __path__ - The path to the root of your client directory.
 * __options__ - Optional options hash.
   - appName - 'App' by default, used as your application global.
-  - templatePath - `lib/defaultTemplate` (in emberate project) by default.
+  - templatePath - `lib/defaultTemplate.hbs` (in emberate project) by default.
   - pods - `false` by default
 
 **Options below are for backwards compatibility only, and do not work with PODS**  
