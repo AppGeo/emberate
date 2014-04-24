@@ -44,11 +44,21 @@ test('works with required dirs/files only', function (t) {
   });
 });
 
-test('inflector', function (t) {
+test('inflector: by type', function (t) {
   var inflector = require('../lib/inflector');
 
   t.deepEqual(inflector('test.js'), { cat: 'test', name: 'Test' }, 'inflects root file');
   t.deepEqual(inflector('controllers/application.js'), { cat: 'controller', name: 'ApplicationController' }, 'inflects one level deep');
   t.deepEqual(inflector('controllers/user/index.js'), { cat: 'controller', name: 'UserIndexController' }, 'inflects two levels deep');
+  t.end();
+});
+
+test('inflector: pods', function (t) {
+  var inflector = require('../lib/inflector', true);
+  
+  t.deepEqual(inflector('test.js'), { cat: 'test', name: 'Test' }, 'inflects root file');
+  t.deepEqual(inflector('pods/application/controller.js'), { cat: 'controller', name: 'ApplicationController' }, 'inflects one level deep');
+  t.deepEqual(inflector('pods/user/index/route.js'), { cat: 'route', name: 'UserIndexRoute' }, 'inflects two levels deep');
+  t.deepEqual(inflector('app/mixins/ajax.js'), { cat: 'mixin', name: 'AjaxMixin' }, 'inflects app level by type');
   t.end();
 });

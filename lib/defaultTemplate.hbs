@@ -1,12 +1,9 @@
 // this file is auto-generated, do not edit
-
 require('ember'); // get Ember global around for the templates
 require('./.templates');
 
-var routes = require('./config/routes');
 var {{appName}} = require('./config/application');
-
-{{appName}}.Router.map(routes);
+{{appName}}.Router.map(require('./config/routes'));
 
 {{#each helpers}}
 require('{{path}}');{{/each}}
