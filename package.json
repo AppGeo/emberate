@@ -1,14 +1,14 @@
 {
-  "name": "ember-stream-generator",
-  "version": "0.3.8",
-  "description": "streams!!!!",
+  "name": "emberate",
+  "description": "go through a directory to make an ember index, it doesn't iterate, it emberates",
+  "version": "0.3.11",
   "license": "MIT",
   "main": "./lib",
-  "homepage": "https://github.com/AppGeo/ember-stream-generator",
-  "bugs": "https://github.com/AppGeo/ember-stream-generator/issues",
+  "homepage": "https://github.com/AppGeo/emberate",
+  "bugs": "https://github.com/AppGeo/emberate/issues",
   "repository": {
     "type": "git",
-    "url": "git://github.com/AppGeo/ember-stream-generator.git"
+    "url": "git://github.com/AppGeo/emberate.git"
   },
   "keywords": [
     "ember",
