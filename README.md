@@ -5,10 +5,12 @@ Emberate [![Build Status][travis-img]][travis-url]
 
 This generator set is used to create an CJS `require` hierarchy for an EmberJS project structure.
 The main use-case, is for use with Browserify.  
+
+**Now supporting [PODS][pods] project structure.**
+
 For example, given the following structure:
 
-
-```
+```no-highlight
 app
   |_controllers/
     |_user.js
@@ -30,10 +32,8 @@ This generator set can be used to generate a file, along the lines of `.index.js
 require('ember'); // get Ember global around for the templates
 require('./.templates');
 
-var routes = require('./config/routes');
 var App = require('./config/application');
-
-App.Router.map(routes);
+App.Router.map(require('./config/routes'));
 // End template code
 
 // Start generated code
@@ -45,7 +45,6 @@ App.UserNewRoute = require('./routes/user/new');
 // more ...
 ```
 
-_Note: The `config` directory is required, with the application definition in `config/application.js` and the router definition in `config/routes.js`. This also requires a `.templates.js` file in the root directory (this is a precompiled templates file, see [ember-template-compiler][compiler])._
 
 ## Usage
 
@@ -61,10 +60,10 @@ __Basic Example__:
 
 This stream should be used with other streams:
 ```js
-var esg = require('emberate');
+var emberate = require('emberate');
 var fs = require('fs');
 
-esg('./client/app').pipe(fs.createReadStream('./tmp/.index.js'));
+emberate('./client/app').pipe(fs.createReadStream('./tmp/.index.js'));
 ```
 
 From here you can run browserify: `browserify ./client/.index.js --outfile ./dist/scripts/application.js`.
@@ -72,12 +71,62 @@ From here you can run browserify: `browserify ./client/.index.js --outfile ./dis
 
 __Available Options__:
 
+* __path__ - The path to the root of your client directory.
+* __options__ - Optional options hash.
+  - appName - 'App' by default, used as your application global.
+  - templatePath - `lib/defaultTemplate` (in emberate project) by default.
+  - pods - `false` by default
+
+**Options below are for backwards compatibility only, and do not work with PODS**  
+
 This stream takes three options `stream(path, appName, customTemplatePath)`.
 
 * __path__ - The path to the root of you client directory.
 * __appName__ - Name of your `Ember.Application` instance, e.g. `App.UserRoute`.
 * __customTemplatePath__ - Path to custom template, the default template is [here][default-template].
 
+
+### PODS
+
+When using PODS, you must use the new options syntax, see above.
+
+```js
+var emberate = require('emberate');
+
+emberate('./client', { pods: true })
+  .pipe(fs.createReadStream('./tmp/.index.js'));
+```
+
+This requires the following structure in the `./client` folder:
+
+```no-highlight
+./client
+  |_app/
+    |_config/
+      |_application.js
+      |_routes.js
+    |_mixins/
+    |_models/
+    |_initializers/
+    |_helpers/
+    |_transforms/
+    |_adapters/
+    |_serializers/
+  |_pods/
+    |_application/
+      |_controller.js
+      |_template.hbs
+    |_users/
+      |_index/
+        |_template.hbs
+  |_components/
+    |_nav-menu
+      |_component.js
+```
+
+And the use of `hbsfy` (PR not yet merged, install like so:
+`npm install --save-dev git://github.com/knownasilya/node-hbsfy.git#824637d0b7f37edc2969fc0557f142aa83193814` for now..) for browserify,
+which should work with the default options.
 
 
 ### Via Grunt
@@ -106,7 +155,7 @@ gulp.task('pre-browserify', function () {
   var rename = require('gulp-rename');
   var source = require('vinyl-source-stream');
   var clientPath = './client/';
-  
+
   emberStream(clientPath)
     .pipe(source(clientPath))
     .pipe(rename('.index.js'))
@@ -125,3 +174,4 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][1].
 [npm-badge-img]: https://nodei.co/npm/emberate.svg?compact=true
 [npm-badge-url]: https://nodei.co/npm/emberate/
 [default-template]: https://github.com/AppGeo/emberate/blob/master/lib/defaultTemplate.hbs
+[pods]: http://emberjs.com/blog/2013/12/17/whats-coming-in-ember-in-2014.html
