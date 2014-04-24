@@ -53,7 +53,7 @@ _Note: The `config` directory is required, with the application definition in `c
 __Install__:
 
 ```js
-npm install ember-stream-generator --save-dev
+npm install emberate --save-dev
 ```
 
 
@@ -61,7 +61,7 @@ __Basic Example__:
 
 This stream should be used with other streams:
 ```js
-var esg = require('ember-stream-generator');
+var esg = require('emberate');
 var fs = require('fs');
 
 esg('./client/app').pipe(fs.createReadStream('./tmp/.index.js'));
@@ -87,7 +87,7 @@ This stream takes three options `stream(path, appName, customTemplatePath)`.
   // creates a file with requires for App.* for ember
   grunt.registerTask('pre-browserify', function () {
     var done = this.async();
-    var emberStream = require('ember-stream-generator');
+    var emberStream = require('emberate');
     var fs = require('fs');
     var inStream = emberStream('./client');
     var outStream = fs.createWriteStream('./client/.index.js');
@@ -102,7 +102,7 @@ This stream takes three options `stream(path, appName, customTemplatePath)`.
 ```js
 // creates a file with requires for App.* for ember
 gulp.task('pre-browserify', function () {
-  var emberStream = require('ember-stream-generator');
+  var emberStream = require('emberate');
   var rename = require('gulp-rename');
   var source = require('vinyl-source-stream');
   var clientPath = './client/';
@@ -120,8 +120,8 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][1].
 
 [1]: https://github.com/rpflorence/loom-ember
 [compiler]: https://github.com/toranb/ember-template-compiler
-[travis-url]: https://travis-ci.org/AppGeo/ember-stream-generator
-[travis-img]: https://travis-ci.org/AppGeo/ember-stream-generator.svg?branch=master
-[npm-badge-img]: https://nodei.co/npm/ember-stream-generator.svg?compact=true
-[npm-badge-url]: https://nodei.co/npm/ember-stream-generator/
-[default-template]: https://github.com/AppGeo/ember-stream-generator/blob/master/lib/defaultTemplate.hbs
+[travis-url]: https://travis-ci.org/AppGeo/emberate
+[travis-img]: https://travis-ci.org/AppGeo/emberate.svg?branch=master
+[npm-badge-img]: https://nodei.co/npm/emberate.svg?compact=true
+[npm-badge-url]: https://nodei.co/npm/emberate/
+[default-template]: https://github.com/AppGeo/emberate/blob/master/lib/defaultTemplate.hbs
