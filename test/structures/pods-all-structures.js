@@ -1,6 +1,5 @@
 // this file is auto-generated, do not edit
 require('ember'); // get Ember global around for the templates
-require('./.templates');
 
 var App = require('./app/config/application');
 App.Resolver = Ember.DefaultResolver.extend({
