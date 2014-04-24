@@ -125,7 +125,7 @@ This requires the following structure in the `./client` folder:
 ```
 
 And the use of `hbsfy` (PR not yet merged, install like so:
-`npm install --save-dev git://github.com/knownasilya/node-hbsfy.git#824637d0b7f37edc2969fc0557f142aa83193814` for now..) for browserify,
+`npm install --save-dev knownasilya/node-hbsfy#ember` for now..) for browserify,
 which should work with the default options.
 
 
