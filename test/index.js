@@ -44,6 +44,10 @@ test('works with required dirs/files only', function (t) {
   });
 });
 
+test('pods: all available items', function (t) {
+  t.end();
+});
+
 test('inflector: by type', function (t) {
   var inflector = require('../lib/inflector');
 
@@ -56,9 +60,9 @@ test('inflector: by type', function (t) {
 test('inflector: pods', function (t) {
   var inflector = require('../lib/inflector', true);
   
-  t.deepEqual(inflector('test.js'), { cat: 'test', name: 'Test' }, 'inflects root file');
-  t.deepEqual(inflector('pods/application/controller.js'), { cat: 'controller', name: 'ApplicationController' }, 'inflects one level deep');
-  t.deepEqual(inflector('pods/user/index/route.js'), { cat: 'route', name: 'UserIndexRoute' }, 'inflects two levels deep');
-  t.deepEqual(inflector('app/mixins/ajax.js'), { cat: 'mixin', name: 'AjaxMixin' }, 'inflects app level by type');
+  t.deepEqual(inflector('test.js', true), { cat: 'test', name: 'Test' }, 'inflects root file');
+  t.deepEqual(inflector('pods/application/controller.js', true), { cat: 'controller', name: 'ApplicationController' }, 'inflects one level deep');
+  t.deepEqual(inflector('pods/user/index/route.js', true), { cat: 'route', name: 'UserIndexRoute' }, 'inflects two levels deep');
+  t.deepEqual(inflector('app/mixins/ajax.js', true), { cat: 'mixin', name: 'AjaxMixin' }, 'inflects app level by type');
   t.end();
 });
