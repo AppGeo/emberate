@@ -6,6 +6,10 @@
   "main": "./lib",
   "homepage": "https://github.com/AppGeo/emberate",
   "bugs": "https://github.com/AppGeo/emberate/issues",
+  "bin": {
+    "emberate": "./bin/emberate"
+  },
+  "preferGlobal": true,
   "repository": {
     "type": "git",
     "url": "git://github.com/AppGeo/emberate.git"
@@ -29,7 +33,8 @@
     "handlebars": "^1.3.0",
     "readable-stream": "^1.0.26-2",
     "spider-stream": "^0.1.0",
-    "through2": "^0.4.1"
+    "through2": "^0.4.1",
+    "ltcdr": "^2.2.1"
   },
   "devDependencies": {
     "tap-nyan": "0.0.2",
