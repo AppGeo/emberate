@@ -147,6 +147,25 @@ This requires the following structure in the `./client` folder:
       |_component.js
 ```
 
+### CLI
+
+For ease of use with npm scripts and for quick testing.
+
+```no-highlight
+Usage: emberate [options]
+
+  Options:
+
+    -h, --help                   output usage information
+    -V, --version                output the version number
+    -o, --output-path [path]     Output path of generated file
+    -p, --pods                   Enable PODS support
+    -i, --input-directory [dir]  Directory to start crawling file tree
+    -n, --app-name [app-name]    App Name, where your app resides globally
+```
+
+__--input-directory__ defaults to `./client` and __--output-path__ to `./client/.index.js`,
+so you can call `emberate` or `emberate -p` (for PODS).
 
 
 ### Via Grunt
