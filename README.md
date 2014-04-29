@@ -1,4 +1,4 @@
-Emberate [![Build Status][travis-img]][travis-url]
+Emberate [![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img]][coverage-url]
 ======================
 
 [![NPM][npm-badge-img]][npm-badge-url]
@@ -193,3 +193,5 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][loom-em
 [npm-badge-url]: https://nodei.co/npm/emberate/
 [default-template]: https://github.com/AppGeo/emberate/blob/master/lib/defaultTemplate.hbs
 [pods]: http://emberjs.com/blog/2013/12/17/whats-coming-in-ember-in-2014.html
+[coverage-img]: https://codeclimate.com/github/AppGeo/emberate.png
+[coverage-url]: https://codeclimate.com/github/AppGeo/emberate
