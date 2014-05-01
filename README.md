@@ -173,11 +173,11 @@ so you can call `emberate` or `emberate -p` (for PODS).
 
 ```js
   // creates a file with requires for App.* for ember
-  grunt.registerTask('pre-browserify', function () {
+  grunt.registerTask('emberate', function () {
     var done = this.async();
     var emberate = require('emberate');
     
-    emberate('./client', { outPath: './tmp/.index.js' }, function () {
+    emberate('./client', { outPath: './tmp/.index.js', pods: true }, function () {
       done();  
     });
   });
@@ -187,16 +187,13 @@ so you can call `emberate` or `emberate -p` (for PODS).
 
 ```js
 // creates a file with requires for App.* for ember
-gulp.task('pre-browserify', function () {
+gulp.task('emberate', function () {
   var emberate = require('emberate');
-  var rename = require('gulp-rename');
   var source = require('vinyl-source-stream');
-  var clientPath = './client/';
 
-  emberate(clientPath)
-    .pipe(source(clientPath))
-    .pipe(rename('.index.js'))
-    .pipe(gulp.dest(clientPath));
+  return emberate('./client', { pods: true })
+    .pipe(source('.index.js'))
+    .pipe(gulp.dest('./client'));
 });
 ```
 
