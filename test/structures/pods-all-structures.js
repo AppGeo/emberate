@@ -1,13 +1,14 @@
 // this file is auto-generated, do not edit
 require('ember'); // get Ember global around for the templates
 
-var App = require('./app/config/application');
-App.Resolver = Ember.DefaultResolver.extend({
+Ember.DefaultResolver.reopen({
   resolveTemplate: function(parsedName) {
     this.useRouterNaming(parsedName);
     return this.resolveOther(parsedName);
   }  
 });
+
+var App = require('./app/config/application');
 App.Router.map(require('./app/config/routes'));
 
 
