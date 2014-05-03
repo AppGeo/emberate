@@ -9,8 +9,8 @@ require('./app/helpers/ajax');
 
 
 Ember.TEMPLATES['user/index'] = require('./pods/user/index/template.hbs');
-Ember.TEMPLATES['sidebar'] = require('./app/templates/sidebar.hbs');
 Ember.TEMPLATES['application'] = require('./pods/application/template.hbs');
+Ember.TEMPLATES['sidebar'] = require('./app/templates/sidebar.hbs');
 App.TestInitializer = require('./app/initializers/test');
 App.TestMixin = require('./app/mixins/test');
 App.ObjectTransform = require('./app/transforms/object');
