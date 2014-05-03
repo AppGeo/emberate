@@ -1,20 +1,14 @@
 // this file is auto-generated, do not edit
 require('ember'); // get Ember global around for the templates
 
-Ember.DefaultResolver.reopen({
-  resolveTemplate: function(parsedName) {
-    this.useRouterNaming(parsedName);
-    return this.resolveOther(parsedName);
-  }  
-});
-
 var {{appName}} = require('./app/config/application');
 {{appName}}.Router.map(require('./app/config/routes'));
 
 {{#each helpers}}
 require('{{path}}');{{/each}}
 
-{{#each modules}}
-{{../appName}}.{{name}} = require('{{path}}');{{/each}}
+{{#each modules}}{{#if isTemplate}}
+Ember.TEMPLATES['{{name}}'] = require('{{path}}');{{else}}
+{{../../appName}}.{{name}} = require('{{path}}');{{/if}}{{/each}}
 
 module.exports = {{appName}};

@@ -1,13 +1,6 @@
 // this file is auto-generated, do not edit
 require('ember'); // get Ember global around for the templates
 
-Ember.DefaultResolver.reopen({
-  resolveTemplate: function(parsedName) {
-    this.useRouterNaming(parsedName);
-    return this.resolveOther(parsedName);
-  }  
-});
-
 var App = require('./app/config/application');
 App.Router.map(require('./app/config/routes'));
 
@@ -15,7 +8,8 @@ App.Router.map(require('./app/config/routes'));
 require('./app/helpers/ajax');
 
 
-App.ApplicationTemplate = require('./pods/application/template.hbs');
+Ember.TEMPLATES['user/index'] = require('./pods/user/index/template.hbs');
+Ember.TEMPLATES['application'] = require('./pods/application/template.hbs');
 App.TestInitializer = require('./app/initializers/test');
 App.TestMixin = require('./app/mixins/test');
 App.ObjectTransform = require('./app/transforms/object');
