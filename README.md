@@ -67,7 +67,7 @@ emberate('./client', { outPath: './tmp/.index.js' }, function () {
 ```
 
 From here you can run browserify: `browserify ./client/.index.js --outfile ./dist/scripts/application.js`.  
-_Note: This stream could also be be used with other streams, via `pipe`. Just omit the callback and the `outPath` option._
+_Note: This stream could also be used with other streams, via `pipe`. Just omit the callback and the `outPath` option._
 
 __Available Options__:
 
