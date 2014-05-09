@@ -61,9 +61,10 @@ __Basic Example__:
 This stream should be used with other streams:
 ```js
 var emberate = require('emberate');
-var fs = require('fs');
 
-emberate('./client').pipe(fs.createReadStream('./tmp/.index.js'));
+emberate('./client', { outPath: './tmp/.index.js' }, function () {
+  // Done generating file..
+});
 ```
 
 From here you can run browserify: `browserify ./client/.index.js --outfile ./dist/scripts/application.js`.
@@ -115,6 +116,7 @@ Run this before browserifying:
 
 ```js
 var emberate = require('emberate');
+var fs = require('fs');
 
 emberate('./client', { pods: true })
   .pipe(fs.createReadStream('./tmp/.index.js'));
