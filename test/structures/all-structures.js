@@ -1,14 +1,11 @@
 // this file is auto-generated, do not edit
-require('ember'); // get Ember global around for the templates
-require('./.templates');
+var Ember = require('ember'); // get Ember global around for the templates
 
-var App = require('./config/application');
-App.Router.map(require('./config/routes'));
-
-
-require('./helpers/ajax');
+var App = require('./app');
+App.Router = require('./router');
 
 
+Ember.TEMPLATES['application'] = require('./pods/application/template.hbs');
 App.TestInitializer = require('./initializers/test');
 App.TestMixin = require('./mixins/test');
 App.ObjectTransform = require('./transforms/object');

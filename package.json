@@ -1,7 +1,7 @@
 {
   "name": "emberate",
   "description": "go through a directory to make an ember index, it doesn't iterate, it emberates",
-  "version": "0.6.4",
+  "version": "1.0.0-alpha.1",
   "license": "MIT",
   "main": "./lib",
   "homepage": "https://github.com/AppGeo/emberate",
@@ -25,6 +25,7 @@
   ],
   "scripts": {
     "test": "node ./test/index.js | tnyan",
+    "test-debug": "node debug ./test/index.js",
     "tspec": "node ./test/index.js | tspec",
     "coverage": "istanbul cover test/index.js"
   },
