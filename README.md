@@ -6,23 +6,30 @@ Emberate [![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img
 This generator set is used to create an CJS `require` hierarchy for an EmberJS project structure.
 The main use-case, is for use with Browserify.  
 
-**Now supporting [PODS][pods] project structure.**
-
 For example, given the following structure:
 
 ```no-highlight
-app
-  |_controllers/
+  application.js
+  router.js
+  controllers/
     |_user.js
     |_user/
       |_new.js
-  |_views/
+  views/
     |_user.js
-  |_routes/
+  routes/
     |_user.js
     |_user/
       |_new.js
-  |_...
+  pods/
+    |_post/
+      |_route.js
+      |_index/
+        |_template.hbs
+        |_controller.js
+      |_edit/
+        |_template.hbs
+        |_route.js
 ```
 
 This generator set can be used to generate a file, along the lines of `.index.js`, with the following contents:

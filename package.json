@@ -25,6 +25,7 @@
   ],
   "scripts": {
     "test": "node ./test/index.js | tnyan",
+    "test-debug": "node debug ./test/index.js",
     "tspec": "node ./test/index.js | tspec",
     "coverage": "istanbul cover test/index.js"
   },
