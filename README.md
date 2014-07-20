@@ -41,9 +41,10 @@ entry point for browserify.
 
 __Install required packages__:
 
-```js
+```bash
 # Install dependencies
 npm install knownasilya/node-hbsfy#ember ember-template-compiler browserify --save-dev
+
 # Install emberate
 npm install emberate --save-dev
 ```
