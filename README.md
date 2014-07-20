@@ -4,7 +4,7 @@ Emberate [![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img
 [![NPM][npm-badge-img]][npm-badge-url]
 
 Emberate is used to create an commonjs `require` hierarchy for an Ember.js project structure,
-mainly to be used with [browserify][browserify].
+mainly to be used with [browserify].
 
 For example, given the following structure:
 
@@ -186,4 +186,4 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][loom-em
 [default-template]: https://github.com/AppGeo/emberate/blob/master/lib/defaultTemplate.hbs
 [coverage-img]: https://codeclimate.com/github/AppGeo/emberate.png
 [coverage-url]: https://codeclimate.com/github/AppGeo/emberate
-[browserify][http://browserify.org/]
+[browserify]: http://browserify.org/
