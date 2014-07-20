@@ -83,7 +83,8 @@ From here you can run browserify:
 browserify ./client/.index.js --outfile ./dist/scripts/application.js`
 ```
 
-This is a basic example, for something more useful have a look at the [gulp] and [grunt] examples.
+This is a basic example, for something more useful have a look at the [gulp] and [grunt] examples,
+get started with the emberate [scaffold] repo.
 
 __Available Options__:
 
@@ -191,3 +192,4 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][loom-em
 [browserify]: http://browserify.org/
 [gulp]: README.md#via-gulp
 [grunt]: README.md#via-grunt
+[scaffold]: https://github.com/AppGeo/emberate-scaffold
