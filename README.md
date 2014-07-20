@@ -83,6 +83,8 @@ From here you can run browserify:
 browserify ./client/.index.js --outfile ./dist/scripts/application.js`
 ```
 
+This is a basic example, for something more useful have a look at the [gulp] and [grunt] examples.
+
 __Available Options__:
 
 Emberate exports a function with the following signature: `emberate(path, options, callback)`.
@@ -187,3 +189,5 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][loom-em
 [coverage-img]: https://codeclimate.com/github/AppGeo/emberate.png
 [coverage-url]: https://codeclimate.com/github/AppGeo/emberate
 [browserify]: http://browserify.org/
+[gulp]: README.md#via-gulp
+[grunt]: README.md#via-grunt
