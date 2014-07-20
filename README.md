@@ -9,29 +9,29 @@ mainly to be used with [browserify][browserify].
 For example, given the following structure:
 
 ```no-highlight
-  app.js
-  router.js
-  controllers/
-    |_user.js
-    |_user/
-      |_new.js
-  views/
-    |_profile.js
-  mixins/
-    |_draggable.js
-  models/
-  pods/
-    |_application
-    |_index
-      |_template.hbs  
-    |_post/
+app.js
+router.js
+controllers/
+  |_user.js
+  |_user/
+    |_new.js
+views/
+  |_profile.js
+mixins/
+  |_draggable.js
+models/
+pods/
+  |_application
+  |_index
+    |_template.hbs  
+  |_post/
+    |_route.js
+    |_index/
+      |_template.hbs
+      |_controller.js
+    |_edit/
+      |_template.hbs
       |_route.js
-      |_index/
-        |_template.hbs
-        |_controller.js
-      |_edit/
-        |_template.hbs
-        |_route.js
 ```
 
 Emberate can be used to generate a file that can be used as the
