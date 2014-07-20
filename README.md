@@ -9,19 +9,21 @@ The main use-case, is for use with Browserify.
 For example, given the following structure:
 
 ```no-highlight
-  application.js
+  app.js
   router.js
   controllers/
     |_user.js
     |_user/
       |_new.js
   views/
-    |_user.js
-  routes/
-    |_user.js
-    |_user/
-      |_new.js
+    |_profile.js
+  mixins/
+    |_draggable.js
+  models/
   pods/
+    |_application
+    |_index
+      |_template.hbs  
     |_post/
       |_route.js
       |_index/
@@ -32,82 +34,28 @@ For example, given the following structure:
         |_route.js
 ```
 
-This generator set can be used to generate a file, along the lines of `.index.js`, with the following contents:
-
-```js
-// Start template code: Generated from template
-require('ember'); // get Ember global around for the templates
-require('./.templates');
-
-var App = require('./config/application');
-App.Router.map(require('./config/routes'));
-// End template code
-
-// Start generated code
-App.UserController = require('./controllers/user');
-App.UserNewController = require('./controllers/user/new');
-App.UserView = require('./views/user');
-App.UserRoute = require('./routes/user');
-App.UserNewRoute = require('./routes/user/new');
-// more ...
-```
-
+Emberate can be used to generate a file that can be used as the
+entry point for browserify.
 
 ## Usage
 
-
-__Install__:
+__Install required packages__:
 
 ```js
+# Install dependencies
+npm install knownasilya/node-hbsfy#ember ember-template-compiler browserify --save-dev
+# Install emberate
 npm install emberate --save-dev
 ```
 
+__Setup template precompiling__:
 
-__Basic Example__:
-
-This stream should be used with other streams:
-```js
-var emberate = require('emberate');
-var fs = require('fs');
-
-emberate('./client').pipe(fs.createReadStream('./tmp/.index.js'));
-```
-
-From here you can run browserify: `browserify ./client/.index.js --outfile ./dist/scripts/application.js`.
-
-
-__Available Options__:
-
-* __path__ - The path to the root of your client directory.
-* __options__ - optional, options hash with the available options listed below.
-  - appName - 'App' by default, used as your application global.
-  - templatePath - `lib/defaultTemplate.hbs` (in emberate project) by default.
-  - pods - `false` by default
-  - outPath - where to save the generated file (can only be used if specifying a done callaback after options).
-* __callback__ - optional, returns once done writing, if used _outPath_ option above.
-
-**Options below are for backwards compatibility only, and do not work with PODS**  
-
-This stream takes three options `stream(path, appName, customTemplatePath)`.
-
-* __path__ - The path to the root of you client directory.
-* __appName__ - Name of your `Ember.Application` instance, e.g. `App.UserRoute`.
-* __customTemplatePath__ - Path to custom template, the default template is [here][default-template].
-
-
-### PODS
-
-When using PODS, you must use the new options syntax, see above.
-
-```no-highlight
-npm install --save-dev knownasilya/node-hbsfy#ember ember-template-compiler
-```
-_Note: PR for `hbsfy` has been submitted, jut waiting on response._
-
-Specify the following options in your `package.json`:
+Your `package.json` should look like so (dependencies not shown):
 
 ```json
 {
+  "name": "app-name",
+  "version": "0.0.0",
   "browserify": {
     "transform": ["hbsfy"]
   },
@@ -118,41 +66,65 @@ Specify the following options in your `package.json`:
 }
 ```
 
-Run this before browserifying:
+__Basic Example__:
+
 
 ```js
 var emberate = require('emberate');
 
-emberate('./client', { pods: true })
-  .pipe(fs.createReadStream('./tmp/.index.js'));
+emberate('./client', { outPath: './client/.index.js' }, function () {
+  // './client/.index.js' now exists.. browserify it.
+});
 ```
 
-This requires the following structure in the `./client` folder:
+From here you can run browserify: 
 
-```no-highlight
-./client
-  |_app/
-    |_config/
-      |_application.js
-      |_routes.js
-    |_mixins/
-    |_models/
-    |_initializers/
-    |_helpers/
-    |_transforms/
-    |_adapters/
-    |_serializers/
-  |_pods/
-    |_application/
-      |_controller.js
-      |_template.hbs
-    |_users/
-      |_index/
-        |_template.hbs
-  |_components/
-    |_nav-menu
-      |_component.js
+```bash
+browserify ./client/.index.js --outfile ./dist/scripts/application.js`
 ```
+
+__Available Options__:
+
+Emberate exports a function with the following signature: `emberate(path, options, callback)`.
+
+* __path__ - The path to the root of your client directory.
+* __options__ - optional, options hash with the available options listed below.
+  - appName - 'App' by default, used as your application global.
+  - templatePath - `lib/defaultTemplate.hbs` (in emberate project) by default.
+  - outPath - where to save the generated file (can only be used if specifying a done callaback after options).
+* __callback__ - optional, returns once done writing, if used _outPath_ option above.
+
+The callback is only fired if you specify `outPath` in the options hash, e.g.
+
+```js
+emberate('./client', { outPath: './client/.index.js' }, function () {
+  // './client/.index.js' now exists
+});
+```
+
+Otherwise it's assumed that you are streaming and will create your own output file, etc..
+
+```js
+emberate('./client')
+  .pipe(fs.createWriteStream('./client/.index.js'));
+```
+
+### Folder Structure
+
+- app.js
+- router.js
+- initializers/
+- transforms/
+- mixins/
+- adapters/
+- serializers/
+- models/
+- routes/
+- controllers/
+- views/
+- components/
+- templates/
+- pods/
 
 ### CLI
 
@@ -166,28 +138,25 @@ Usage: emberate [options]
     -h, --help                   output usage information
     -V, --version                output the version number
     -o, --output-path [path]     Output path of generated file
-    -p, --pods                   Enable PODS support
     -i, --input-directory [dir]  Directory to start crawling file tree
     -n, --app-name [app-name]    App Name, where your app resides globally
 ```
 
-__--input-directory__ defaults to `./client` and __--output-path__ to `./client/.index.js`,
-so you can call `emberate` or `emberate -p` (for PODS).
+__--input-directory__ defaults to `./client` and __--output-path__ to `./client/.index.js`.
 
 
 ### Via Grunt
 
-
 ```js
-  // creates a file with requires for App.* for ember
-  grunt.registerTask('emberate', function () {
-    var done = this.async();
-    var emberate = require('emberate');
-    
-    emberate('./client', { outPath: './tmp/.index.js', pods: true }, function () {
-      done();  
-    });
+// creates a file with requires for App.* for ember
+grunt.registerTask('emberate', function () {
+  var done = this.async();
+  var emberate = require('emberate');
+  
+  emberate('./client', { outPath: './tmp/.index.js' }, function () {
+    done();  
   });
+});
 ```
 
 ### Via Gulp
@@ -198,7 +167,7 @@ gulp.task('emberate', function () {
   var emberate = require('emberate');
   var source = require('vinyl-source-stream');
 
-  return emberate('./client', { pods: true })
+  return emberate('./client')
     .pipe(source('.index.js'))
     .pipe(gulp.dest('./client'));
 });
@@ -215,6 +184,5 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][loom-em
 [npm-badge-img]: https://nodei.co/npm/emberate.svg?compact=true
 [npm-badge-url]: https://nodei.co/npm/emberate/
 [default-template]: https://github.com/AppGeo/emberate/blob/master/lib/defaultTemplate.hbs
-[pods]: http://emberjs.com/blog/2013/12/17/whats-coming-in-ember-in-2014.html
 [coverage-img]: https://codeclimate.com/github/AppGeo/emberate.png
 [coverage-url]: https://codeclimate.com/github/AppGeo/emberate
