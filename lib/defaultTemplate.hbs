@@ -1,14 +1,11 @@
 // this file is auto-generated, do not edit
-require('ember'); // get Ember global around for the templates
-require('./.templates');
+var Ember = require('ember'); // get Ember global around for the templates
 
-var {{appName}} = require('./config/application');
-{{appName}}.Router.map(require('./config/routes'));
+var {{appName}} = require('./app');
+{{appName}}.Router = require('./router');
 
-{{#each helpers}}
-require('{{path}}');{{/each}}
-
-{{#each modules}}
-{{../appName}}.{{name}} = require('{{path}}');{{/each}}
+{{#each modules}}{{#if isTemplate}}
+Ember.TEMPLATES['{{name}}'] = require('{{path}}');{{else}}
+{{../../appName}}.{{name}} = require('{{path}}');{{/if}}{{/each}}
 
 module.exports = {{appName}};
