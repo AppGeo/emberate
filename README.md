@@ -45,6 +45,8 @@ __Install required packages__:
 npm install emberate hbsfy ember-template-compiler browserify --save-dev
 ```
 
+_Note: hbsfy can only be used for versions >= 2.1.0_
+
 __Basic Example__:
 
 
