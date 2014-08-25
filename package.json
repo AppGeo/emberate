@@ -1,7 +1,7 @@
 {
   "name": "emberate",
-  "description": "go through a directory to make an ember index, it doesn't iterate, it emberates",
-  "version": "1.0.0-alpha.1",
+  "description": "helper for using emberjs with commonjs modules",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "./lib",
   "homepage": "https://github.com/AppGeo/emberate",
@@ -21,7 +21,9 @@
     "ember",
     "emberjs",
     "browserify",
-    "streams"
+    "streams",
+    "commonjs",
+    "emberate"
   ],
   "scripts": {
     "test": "node ./test/index.js | tnyan",
