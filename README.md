@@ -41,33 +41,29 @@ entry point for browserify.
 
 __Install required packages__:
 
-```js
-# Install dependencies
-npm install knownasilya/node-hbsfy#ember ember-template-compiler browserify --save-dev
-# Install emberate
-npm install emberate --save-dev
-```
-
-__Setup template precompiling__:
-
-Your `package.json` should look like so (dependencies not shown):
-
-```json
-{
-  "name": "app-name",
-  "version": "0.0.0",
-  "browserify": {
-    "transform": ["hbsfy"]
-  },
-  "hbsfy": {
-    "precompiler": "ember-template-compiler",
-    "compiler": "Ember.Handlebars"
-  }
-}
+```bash
+npm install emberate hbsfy ember-template-compiler browserify --save-dev
 ```
 
 __Basic Example__:
 
+
+```js
+var emberate = require('emberate');
+
+emberate('./client', { outPath: './client/.index.js' }, function () {
+  // './client/.index.js' now exists.. browserify it.
+});
+```
+
+From here you can run browserify: 
+
+```bash
+browserify -t [ hbsfy -p ember-template-compiler -c Ember.Handlebars ] ./client/.index.js --outfile ./dist/scripts/application.js`
+```
+
+This is a basic example, for something more useful have a look at the [gulp] and [grunt] examples, or the
+getting started with emberate [scaffold] repo.
 
 __Available Options__:
 
@@ -173,3 +169,6 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][loom-em
 [coverage-img]: https://codeclimate.com/github/AppGeo/emberate.png
 [coverage-url]: https://codeclimate.com/github/AppGeo/emberate
 [browserify]: http://browserify.org/
+[gulp]: README.md#via-gulp
+[grunt]: README.md#via-grunt
+[scaffold]: https://github.com/AppGeo/emberate-scaffold
