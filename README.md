@@ -42,29 +42,7 @@ entry point for browserify.
 __Install required packages__:
 
 ```bash
-# Install dependencies
-npm install knownasilya/node-hbsfy#ember ember-template-compiler browserify --save-dev
-
-# Install emberate
-npm install emberate --save-dev
-```
-
-__Setup template precompiling__:
-
-Your `package.json` should look like so (dependencies not shown):
-
-```json
-{
-  "name": "app-name",
-  "version": "0.0.0",
-  "browserify": {
-    "transform": ["hbsfy"]
-  },
-  "hbsfy": {
-    "precompiler": "ember-template-compiler",
-    "compiler": "Ember.Handlebars"
-  }
-}
+npm install emberate hbsfy ember-template-compiler browserify --save-dev
 ```
 
 __Basic Example__:
@@ -81,11 +59,11 @@ emberate('./client', { outPath: './client/.index.js' }, function () {
 From here you can run browserify: 
 
 ```bash
-browserify ./client/.index.js --outfile ./dist/scripts/application.js`
+browserify -t [ hbsfy -p ember-template-compiler -c Ember.Handlebars ] ./client/.index.js --outfile ./dist/scripts/application.js`
 ```
 
-This is a basic example, for something more useful have a look at the [gulp] and [grunt] examples,
-get started with the emberate [scaffold] repo.
+This is a basic example, for something more useful have a look at the [gulp] and [grunt] examples, or the
+getting started with emberate [scaffold] repo.
 
 __Available Options__:
 
