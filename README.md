@@ -121,13 +121,10 @@ Usage: emberate [options]
 
     -h, --help                   output usage information
     -V, --version                output the version number
-    -o, --output-path [path]     Output path of generated file
-    -i, --input-directory [dir]  Directory to start crawling file tree
-    -n, --app-name [app-name]    App Name, where your app resides globally
+    -o, --output-path [path]     Output path of generated file, default: './client/.index.js'
+    -i, --input-directory [dir]  Directory to start crawling file tree, default: './client'
+    -n, --app-name [app-name]    App Name, where your app resides globally, default 'App'
 ```
-
-__--input-directory__ defaults to `./client` and __--output-path__ to `./client/.index.js`.
-
 
 ### Via Grunt
 
