@@ -3,7 +3,7 @@ Emberate [![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img
 
 [![NPM][npm-badge-img]][npm-badge-url]
 
-Emberate is used to create an commonjs `require` hierarchy for an Ember.js project structure,
+Emberate is used to create a commonjs `require` hierarchy for your Ember.js project structure,
 mainly to be used with [browserify].
 
 For example, given the following structure:
