@@ -42,10 +42,11 @@ entry point for browserify.
 __Install required packages__:
 
 ```bash
-npm install emberate hbsfy ember-template-compiler browserify --save-dev
+npm install emberate hbsfy handlebars ember-template-compiler browserify --save-dev
 ```
 
-_Note: hbsfy can only be used for versions >= 2.1.0_
+_Note: hbsfy can only be used for versions >= 2.1.0 and if using Handlebars >= 2, then
+the ember-template-compiler needs to be version 1.9.0-alpha or greater._
 
 __Basic Example__:
 
