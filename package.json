@@ -26,9 +26,8 @@
     "emberate"
   ],
   "scripts": {
-    "test": "node ./test/index.js | tnyan",
+    "test": "node ./test/index.js | tspec",
     "test-debug": "node debug ./test/index.js",
-    "tspec": "node ./test/index.js | tspec",
     "coverage": "istanbul cover test/index.js"
   },
   "dependencies": {
@@ -37,13 +36,12 @@
     "fleck": "^0.5.1",
     "ltcdr": "^2.2.1",
     "readable-stream": "^1.0.31",
-    "spider-stream": "^0.2.1",
+    "spider-stream": "^0.2.2",
     "through2": "^0.6.1"
   },
   "devDependencies": {
     "handlebars": "^2.0.0",
     "istanbul": "^0.3.2",
-    "tap-nyan": "0.0.2",
     "tap-spec": "^0.2.1",
     "tape": "^2.14.0"
   },
