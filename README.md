@@ -4,6 +4,8 @@ Emberate [![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img
 
 [![NPM][npm-badge-img]][npm-badge-url]
 
+**Note: You probably want to use [ember-cli], which has browserify support with the [ember-browserify] module.**
+
 Emberate is used to create a commonjs `require` hierarchy for your Ember.js project structure,
 mainly to be used with [browserify].
 
@@ -173,3 +175,5 @@ The concept and some of the code comes from Ryan Florence's [loom-ember][loom-em
 [gulp]: README.md#via-gulp
 [grunt]: README.md#via-grunt
 [scaffold]: https://github.com/AppGeo/emberate-scaffold
+[ember-cli]: https://github.com/ember-cli/ember-cli
+[ember-browserify]: https://github.com/ef4/ember-browserify
