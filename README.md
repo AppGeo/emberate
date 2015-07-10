@@ -1,5 +1,6 @@
-Emberate [![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img]][coverage-url]
+Emberate
 ======================
+[![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img]][coverage-url]  
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/AppGeo/emberate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![NPM][npm-badge-img]][npm-badge-url]
