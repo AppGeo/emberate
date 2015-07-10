@@ -7,7 +7,7 @@ Emberate [![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img
 **Note: You probably want to use [ember-cli], which has browserify support with the [ember-browserify] module.**
 
 Emberate is used to create a commonjs `require` hierarchy for your Ember.js project structure,
-mainly to be used with [browserify].
+mainly to be used for building with [browserify].
 
 For example, given the following structure:
 
