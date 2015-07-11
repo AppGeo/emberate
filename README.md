@@ -162,6 +162,7 @@ gulp.task('emberate', function () {
 ## Acknowledgment
 
 The concept and some of the code comes from Ryan Florence's [loom-ember][loom-ember].
+Also lots of the work regarding streams and performance was done by Calvin Metcalf.
 
 [loom-ember]: https://github.com/rpflorence/loom-ember
 [compiler]: https://github.com/toranb/ember-template-compiler
