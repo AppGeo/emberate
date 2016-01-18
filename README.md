@@ -27,7 +27,7 @@ models/
 pods/
   |_ application
   |_ index
-    |_ template.hbs  
+    |_ template.hbs
   |_ post/
     |_ route.js
     |_ index/
@@ -63,7 +63,7 @@ emberate('./client', { outPath: './client/.index.js' }, function () {
 });
 ```
 
-From here you can run browserify: 
+From here you can run browserify:
 
 ```bash
 browserify -t [ hbsfy -p ember-template-compiler -c Ember.Handlebars ] ./client/.index.js --outfile ./dist/scripts/application.js`
@@ -81,6 +81,7 @@ Emberate exports a function with the following signature: `emberate(path, option
   - appName - 'App' by default, used as your application global.
   - templatePath - `lib/defaultTemplate.hbs` (in emberate project) by default.
   - outPath - where to save the generated file (can only be used if specifying a done callaback after options).
+  - podModulePrefix - Name of the directory containing pod modules. `pods` by default.
 * __callback__ - optional, returns once done writing, if used _outPath_ option above.
 
 The callback is only fired if you specify `outPath` in the options hash, e.g.
@@ -138,9 +139,9 @@ Usage: emberate [options]
 grunt.registerTask('emberate', function () {
   var done = this.async();
   var emberate = require('emberate');
-  
+
   emberate('./client', { outPath: './tmp/.index.js' }, function () {
-    done();  
+    done();
   });
 });
 ```
