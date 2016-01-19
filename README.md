@@ -1,9 +1,7 @@
 Emberate
 ======================
-[![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img]][coverage-url]  
+[![NPM][npm-badge-img]][npm-badge-link] [![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img]][coverage-url]  
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/AppGeo/emberate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![NPM][npm-badge-img]][npm-badge-url]
 
 **Note: You probably want to use [ember-cli], which has browserify support with the [ember-browserify] module.**
 
@@ -169,8 +167,8 @@ Also lots of the work regarding streams and performance was done by Calvin Metca
 [compiler]: https://github.com/toranb/ember-template-compiler
 [travis-url]: https://travis-ci.org/AppGeo/emberate
 [travis-img]: https://travis-ci.org/AppGeo/emberate.svg?branch=master
-[npm-badge-img]: https://nodei.co/npm/emberate.svg?compact=true
-[npm-badge-url]: https://nodei.co/npm/emberate/
+[npm-badge-img]: https://badge.fury.io/js/emberate.svg
+[npm-badge-link]: http://badge.fury.io/js/emberate
 [default-template]: https://github.com/AppGeo/emberate/blob/master/lib/defaultTemplate.hbs
 [coverage-img]: https://codeclimate.com/github/AppGeo/emberate.png
 [coverage-url]: https://codeclimate.com/github/AppGeo/emberate
