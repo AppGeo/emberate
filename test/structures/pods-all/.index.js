@@ -27,6 +27,7 @@ App.XPlayerComponent = require('./components/x-player');
 App.ApplicationController = require('./pods/application/controller');
 App.UserIndexController = require('./pods/user/index/controller');
 App.ApplicationRoute = require('./pods/application/route');
+App.AccountService = require('./services/account');
 App.ApplicationView = require('./pods/application/view');
 
 module.exports = App;

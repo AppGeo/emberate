@@ -27,6 +27,7 @@ App.XPlayerComponent = require('./components/x-player');
 App.ApplicationController = require('./foo/application/controller');
 App.UserIndexController = require('./foo/user/index/controller');
 App.ApplicationRoute = require('./foo/application/route');
+App.AccountService = require('./services/account');
 App.ApplicationView = require('./foo/application/view');
 
 module.exports = App;
