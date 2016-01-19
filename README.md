@@ -170,7 +170,7 @@ Also lots of the work regarding streams and performance was done by Calvin Metca
 [npm-badge-img]: https://badge.fury.io/js/emberate.svg
 [npm-badge-link]: http://badge.fury.io/js/emberate
 [default-template]: https://github.com/AppGeo/emberate/blob/master/lib/defaultTemplate.hbs
-[coverage-img]: https://codeclimate.com/github/AppGeo/emberate.png
+[coverage-img]: https://codeclimate.com/github/AppGeo/emberate.svg
 [coverage-url]: https://codeclimate.com/github/AppGeo/emberate
 [browserify]: http://browserify.org/
 [gulp]: README.md#via-gulp
