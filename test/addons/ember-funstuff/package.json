@@ -1,0 +1,23 @@
+{
+  "name": "ember-funstuff",
+  "description": "",
+  "version": "1.0.0",
+  "license": "",
+  "main": "./index",
+  "homepage": "",
+  "bugs": "",
+  "bin": {
+  },
+  "preferGlobal": true,
+  "repository": {
+  },
+  "keywords": [
+    "ember-addon"
+  ],
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

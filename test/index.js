@@ -8,6 +8,10 @@ var podsAllStructure = path.join(__dirname, 'structures', 'pods-all');
 var podsCustomStructure = path.join(__dirname, 'structures', 'pods-custom');
 var inflector = require('../lib/inflector');
 
+// Place test addons in node_modules
+var cpSync = require('./cpSync');
+cpSync(path.join(__dirname, 'addons'), 'node_modules');
+
 test('creates expected output', function (t) {
   var generatedFile = path.join(__dirname, 'structures', 'all', '.index.js');
   var expectedFile = path.join(__dirname, 'structures', 'all-structures.js');

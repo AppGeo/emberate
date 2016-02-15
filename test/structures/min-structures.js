@@ -12,5 +12,7 @@ var App = require('./app');
 App.Router = require('./router');
 
 
+Ember.TEMPLATES['components/fun-stuff'] = require('ember-funstuff/app/templates/components/fun-stuff.hbs');
+App.FunStuffComponent = require('ember-funstuff/app/components/fun-stuff');
 
 module.exports = App;
