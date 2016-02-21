@@ -1,3 +1,4 @@
+/* global define */
 /**
  * This file is auto-generated, by Emberate
  * (https://www.npmjs.org/package/emberate)
@@ -5,14 +6,36 @@
  * DO NOT MODIFY
  */
 'use strict';
-
 var Ember = require('ember');
+
+require('loader.js/lib/loader.js');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+define('{{appName}}/config/environment', function() {
+  var prefix = '{{appName}}';
+
+  try {
+    var metaName = prefix + '/config/environment';
+    var rawConfig = Ember.$('meta[name="' + metaName + '"]').attr('content');
+    var config = JSON.parse(unescape(rawConfig));
+
+    return { 'default': config };
+  }
+  catch(err) {
+    throw new Error('Could not read config from meta tag with name "' + metaName + '".');
+  }
+});
+
 var {{appName}} = require('./app');
 
 {{appName}}.Router = require('./router');
 
-{{#each modules}}{{#if isTemplate}}
-Ember.TEMPLATES['{{name}}'] = require('{{path}}');{{else}}
-{{../../appName}}.{{name}} = require('{{path}}');{{/if}}{{/each}}
+{{#each modules}}
+define("{{../appName}}/{{name}}", ["exports"], function (exports) {
+  var imported = require('{{path}}');
+  exports["default"] = _interopRequireDefault(imported);
+});
+{{/each}}
 
 module.exports = {{appName}};

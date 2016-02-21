@@ -80,7 +80,7 @@ test('pods: all available items with custom folder', function (t) {
   instance.on('finish', function () {
     fs.readFile(generatedPodsCustomFile, function (err, data) {
       var expected = fs.readFileSync(expectedPodsCustomFile);
-
+      console.log(data.toString());
       t.notOk(err, 'No file reading errors');
       t.deepEqual(data, expected, 'Generated is same as expected');
       t.end();

@@ -1,3 +1,4 @@
+/* global define */
 /**
  * This file is auto-generated, by Emberate
  * (https://www.npmjs.org/package/emberate)
@@ -5,29 +6,98 @@
  * DO NOT MODIFY
  */
 'use strict';
-
 var Ember = require('ember');
-var App = require('./app');
 
-App.Router = require('./router');
+require('loader.js/lib/loader.js');
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-Ember.TEMPLATES['application'] = require('./pods/application/template.hbs');
-Ember.TEMPLATES['components/component-pod'] = require('./components/component-pod/template.hbs');
-Ember.TEMPLATES['sidebar'] = require('./templates/sidebar.hbs');
-Ember.TEMPLATES['user/index'] = require('./pods/user/index/template.hbs');
-App.TestInitializer = require('./initializers/test');
-App.TestMixin = require('./mixins/test');
-App.ObjectTransform = require('./transforms/object');
-App.UserSerializer = require('./serializers/user');
-App.UserAdapter = require('./adapters/user');
-App.User = require('./models/user');
-App.ComponentPodComponent = require('./components/component-pod/component');
-App.XPlayerComponent = require('./components/x-player');
-App.ApplicationController = require('./pods/application/controller');
-App.UserIndexController = require('./pods/user/index/controller');
-App.ApplicationRoute = require('./pods/application/route');
-App.AccountService = require('./services/account');
-App.ApplicationView = require('./pods/application/view');
+define('app/config/environment', function() {
+  var prefix = 'app';
 
-module.exports = App;
+  try {
+    var metaName = prefix + '/config/environment';
+    var rawConfig = Ember.$('meta[name="' + metaName + '"]').attr('content');
+    var config = JSON.parse(unescape(rawConfig));
+
+    return { 'default': config };
+  }
+  catch(err) {
+    throw new Error('Could not read config from meta tag with name "' + metaName + '".');
+  }
+});
+
+var app = require('./app');
+
+app.Router = require('./router');
+
+define("app/components/component-pod/template", ["exports"], function (exports) {
+  var imported = require('./components/component-pod/template.hbs');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/pods/application/template", ["exports"], function (exports) {
+  var imported = require('./pods/application/template.hbs');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/pods/user/index/template", ["exports"], function (exports) {
+  var imported = require('./pods/user/index/template.hbs');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/templates/sidebar", ["exports"], function (exports) {
+  var imported = require('./templates/sidebar.hbs');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/initializers/test", ["exports"], function (exports) {
+  var imported = require('./initializers/test');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/mixins/test", ["exports"], function (exports) {
+  var imported = require('./mixins/test');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/transforms/object", ["exports"], function (exports) {
+  var imported = require('./transforms/object');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/serializers/user", ["exports"], function (exports) {
+  var imported = require('./serializers/user');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/adapters/user", ["exports"], function (exports) {
+  var imported = require('./adapters/user');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/models/user", ["exports"], function (exports) {
+  var imported = require('./models/user');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/components/component-pod/component", ["exports"], function (exports) {
+  var imported = require('./components/component-pod/component');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/components/x-player", ["exports"], function (exports) {
+  var imported = require('./components/x-player');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/pods/application/controller", ["exports"], function (exports) {
+  var imported = require('./pods/application/controller');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/pods/user/index/controller", ["exports"], function (exports) {
+  var imported = require('./pods/user/index/controller');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/pods/application/route", ["exports"], function (exports) {
+  var imported = require('./pods/application/route');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/services/account", ["exports"], function (exports) {
+  var imported = require('./services/account');
+  exports["default"] = _interopRequireDefault(imported);
+});
+define("app/pods/application/view", ["exports"], function (exports) {
+  var imported = require('./pods/application/view');
+  exports["default"] = _interopRequireDefault(imported);
+});
+
+module.exports = app;

@@ -37,7 +37,8 @@
     "ltcdr": "^2.2.1",
     "readable-stream": "^1.0.31",
     "spider-stream": "^0.2.2",
-    "through2": "^0.6.1"
+    "through2": "^0.6.1",
+    "loader.js": "git://github.com/ember-cli/loader.js#v4.0.1"
   },
   "devDependencies": {
     "handlebars": "^2.0.0",
