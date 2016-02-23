@@ -1,6 +1,6 @@
 Emberate
 ======================
-[![NPM][npm-badge-img]][npm-badge-link] [![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img]][coverage-url]  
+[![NPM][npm-badge-img]][npm-badge-link] [![Build Status][travis-img]][travis-url] [![Code Climate][coverage-img]][coverage-url]
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/AppGeo/emberate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 **Note: You probably want to use [ember-cli], which has browserify support with the [ember-browserify] module.**
@@ -76,10 +76,13 @@ Emberate exports a function with the following signature: `emberate(path, option
 
 * __path__ - The path to the root of your client directory.
 * __options__ - optional, options hash with the available options listed below.
-  - appName - 'App' by default, used as your application global.
-  - templatePath - `lib/defaultTemplate.hbs` (in emberate project) by default.
+  - appName - 'app' by default, used as your application global.
   - outPath - where to save the generated file (can only be used if specifying a done callaback after options).
-  - podModulePrefix - Name of the directory containing pod modules. `pods` by default.
+  - modulePrefix - Name of the namespace used by ember to resolve modules, 'app' by default.
+  - podModulePrefix - Name of the directory containing pod modules. `app/pods` by default.
+  - templatePath - `lib/defaultTemplate.hbs` (in emberate project) by default. - *advanced options, only override if needed*
+  - loaderPath - require path to the module loader used to connect commonjs modules with Ember's module system, defaults to a modified version of [ember-cli's loader](https://github.com/ember-cli/loader.js) - *advanced option, only override if needed*
+  - resolverPath - require path for a custom Resolver. Defaults to the most current version of [ember-cli's resolver](https://github.com/ember-cli/ember-resolver) - *advanced option, only override if needed*
 * __callback__ - optional, returns once done writing, if used _outPath_ option above.
 
 The callback is only fired if you specify `outPath` in the options hash, e.g.
@@ -119,15 +122,17 @@ emberate('./client')
 For ease of use with npm scripts and for quick testing.
 
 ```no-highlight
-Usage: emberate [options]
+  Usage: emberate [options]
 
   Options:
 
-    -h, --help                   output usage information
-    -V, --version                output the version number
-    -o, --output-path [path]     Output path of generated file, default: './client/.index.js'
-    -i, --input-directory [dir]  Directory to start crawling file tree, default: './client'
-    -n, --app-name [app-name]    App Name, where your app resides globally, default 'App'
+    -h, --help                                   output usage information
+    -V, --version                                output the version number
+    -o, --output-path [path]                     Output path of generated file
+    -i, --app-directory [dir]                    Directory to start crawling file tree
+    -n, --app-name [app-name]                    App Name, where your app resides globally
+    -m, --module-prefix [module-prefix]          Module prefix, a namespace for app modules
+    -p, --pod-module-prefix [pod-module-prefix]  Pod Module Prefix, the directroy that the ember-resolver uses for pods
 ```
 
 ### Via Grunt

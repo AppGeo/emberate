@@ -5,14 +5,74 @@
  * DO NOT MODIFY
  */
 'use strict';
+var loader = require('{{loaderPath}}');
+var define = loader.define;
 
 var Ember = require('ember');
-var {{appName}} = require('./app');
+var appOpts = require('./app');
 
-{{appName}}.Router = require('./router');
+function es6RequireShim(obj) { return obj && obj.__esModule ? obj.default : obj; }
 
-{{#each modules}}{{#if isTemplate}}
-Ember.TEMPLATES['{{name}}'] = require('{{path}}');{{else}}
-{{../../appName}}.{{name}} = require('{{path}}');{{/if}}{{/each}}
+define("ember/resolver", [], function() {
+  return es6RequireShim(require('{{resolverPath}}'));
+});
 
-module.exports = {{appName}};
+define("ember/load-initializers", [], function() {
+  return {
+    'default': function(app, prefix) {
+      var regex = new RegExp('^' + prefix + '\/((?:instance-)?initializers)\/');
+      var getKeys = (Object.keys || Ember.keys);
+
+      getKeys(loader.requirejs._eak_seen).map(function(moduleName) {
+        return {
+          moduleName: moduleName,
+          matches: regex.exec(moduleName)
+        };
+      }).filter(function(dep) {
+        return dep.matches && dep.matches.length === 2;
+      }).forEach(function(dep) {
+        var moduleName = dep.moduleName;
+
+        var module = require(moduleName, null, null, true);
+        if (!module) { throw new Error(moduleName + ' must export an initializer.'); }
+
+        var initializerType = Ember.String.camelize(dep.matches[1].substring(0, dep.matches[1].length - 1));
+        var initializer = module['default'];
+        if (!initializer.name) {
+          var initializerName = moduleName.match(/[^\/]+\/?$/)[0];
+          initializer.name = initializerName;
+        }
+
+        app[initializerType](initializer);
+      });
+    }
+  };
+});
+define('{{modulePrefix}}/config/environment', [], function() {
+  return {
+    name: '{{appName}}',
+    modulePrefix: '{{modulePrefix}}',
+    podModulePrefix: '{{podModulePrefix}}'
+  };
+});
+define("{{modulePrefix}}/app",  ['exports', 'ember/resolver', 'ember/load-initializers', '{{modulePrefix}}/config/environment'], function(exports, _emberResolver, _emberLoadInitializers, _appConfigEnvironment) {
+  var App;
+
+  Ember.MODEL_FACTORY_INJECTIONS = true;
+
+  App = Ember.Application.extend({
+    modulePrefix: _appConfigEnvironment['default'].modulePrefix,
+    podModulePrefix: _appConfigEnvironment['default'].podModulePrefix,
+    Resolver: _emberResolver['default']
+  });
+
+  (0, _emberLoadInitializers['default'])(App, _appConfigEnvironment['default'].modulePrefix);
+
+  exports['default'] = App;
+});
+{{#each modules}}
+define("{{../modulePrefix}}/{{name}}", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('{{path}}'));
+});
+{{/each}}
+loader.require("{{modulePrefix}}/app")["default"].create(es6RequireShim(appOpts));
