@@ -10,7 +10,7 @@
     "emberate": "./bin/emberate"
   },
   "browser": {
-    "ember": "./lib/ember-shim.js"
+    "ember": "./lib/vendor/ember-shim.js"
   },
   "preferGlobal": true,
   "repository": {

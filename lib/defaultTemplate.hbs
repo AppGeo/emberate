@@ -5,7 +5,7 @@
  * DO NOT MODIFY
  */
 'use strict';
-var loader = require('emberate/lib/loader.js');
+var loader = require('{{loaderPath}}');
 var define = loader.define;
 
 var Ember = require('ember');
@@ -14,7 +14,7 @@ var appOpts = require('./app');
 function es6RequireShim(obj) { return obj && obj.__esModule ? obj.default : obj; }
 
 define("ember/resolver", [], function() {
-  return es6RequireShim(require('emberate/vendor/resolver.js'));
+  return es6RequireShim(require('{{resolverPath}}'));
 });
 
 define("ember/load-initializers", [], function() {
@@ -23,7 +23,7 @@ define("ember/load-initializers", [], function() {
       var regex = new RegExp('^' + prefix + '\/((?:instance-)?initializers)\/');
       var getKeys = (Object.keys || Ember.keys);
 
-      getKeys(loader.requirejs._eak_seen).map(function (moduleName) {
+      getKeys(loader.requirejs._eak_seen).map(function(moduleName) {
         return {
           moduleName: moduleName,
           matches: regex.exec(moduleName)
@@ -46,7 +46,7 @@ define("ember/load-initializers", [], function() {
         app[initializerType](initializer);
       });
     }
-  }
+  };
 });
 define('{{modulePrefix}}/config/environment', [], function() {
   return {
@@ -55,7 +55,7 @@ define('{{modulePrefix}}/config/environment', [], function() {
     podModulePrefix: '{{podModulePrefix}}'
   };
 });
-define("{{modulePrefix}}/app",  ['exports', 'ember/resolver', 'ember/load-initializers', '{{modulePrefix}}/config/environment'], function (exports, _emberResolver, _emberLoadInitializers, _appConfigEnvironment) {
+define("{{modulePrefix}}/app",  ['exports', 'ember/resolver', 'ember/load-initializers', '{{modulePrefix}}/config/environment'], function(exports, _emberResolver, _emberLoadInitializers, _appConfigEnvironment) {
   var App;
 
   Ember.MODEL_FACTORY_INJECTIONS = true;
@@ -69,9 +69,6 @@ define("{{modulePrefix}}/app",  ['exports', 'ember/resolver', 'ember/load-initia
   (0, _emberLoadInitializers['default'])(App, _appConfigEnvironment['default'].modulePrefix);
 
   exports['default'] = App;
-});
-define("{{modulePrefix}}/router", ["exports"], function(exports) {
-  exports["default"] = es6RequireShim(require('./router'));
 });
 {{#each modules}}
 define("{{../modulePrefix}}/{{name}}", ["exports"], function(exports) {

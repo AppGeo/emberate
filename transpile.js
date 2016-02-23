@@ -4,7 +4,7 @@ var outDir = './vendor';
 
 var src = './node_modules/ember-resolver/addon'
 var files = fs.readdirSync(src);
-console.log('building chevron dist files...');
+console.log('building vendor files...');
 
 function outDirFor(inDir) {
   return inDir.replace(src, outDir);
