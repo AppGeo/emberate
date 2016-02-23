@@ -50,7 +50,7 @@ define("ember/load-initializers", [], function() {
 });
 define('app/config/environment', [], function() {
   return {
-    name: 'app',
+    name: 'App',
     modulePrefix: 'app',
     podModulePrefix: 'app/pods'
   };
