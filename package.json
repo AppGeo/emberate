@@ -1,7 +1,7 @@
 {
   "name": "emberate",
   "description": "helper for using emberjs with commonjs modules",
-  "version": "3.1.2",
+  "version": "3.1.1",
   "license": "MIT",
   "main": "./lib",
   "homepage": "https://github.com/AppGeo/emberate",
