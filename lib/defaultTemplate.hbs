@@ -16,7 +16,33 @@ function es6RequireShim(obj) { return obj && obj.__esModule ? obj.default : obj;
 define("ember/resolver", [], function() {
   return es6RequireShim(require('{{resolverPath}}'));
 });
+define('{{modulePrefix}}/config/environment', [], function() {
+  return {
+    name: '{{appName}}',
+    modulePrefix: '{{modulePrefix}}',
+    podModulePrefix: '{{podModulePrefix}}'
+  };
+});
+{{#if debug}}
+define("ember/container-debug-adapter", [], function() {
+  return es6RequireShim(require('{{debugAdapterPath}}'));
+});
+(function() {
+  "use strict";
 
+  Ember.Application.initializer({
+    name: 'container-debug-adapter',
+
+    initialize: function() {
+      var app = arguments[1] || arguments[0];
+      var ContainerDebugAdapter = es6RequireShim(require('{{debugAdapterPath}}'));
+
+      app.register('container-debug-adapter:main', ContainerDebugAdapter);
+      app.inject('container-debug-adapter:main', 'namespace', 'application:main');
+    }
+  });
+}());
+{{/if}}
 define("ember/load-initializers", [], function() {
   return {
     'default': function(app, prefix) {
@@ -46,13 +72,6 @@ define("ember/load-initializers", [], function() {
         app[initializerType](initializer);
       });
     }
-  };
-});
-define('{{modulePrefix}}/config/environment', [], function() {
-  return {
-    name: '{{appName}}',
-    modulePrefix: '{{modulePrefix}}',
-    podModulePrefix: '{{podModulePrefix}}'
   };
 });
 define("{{modulePrefix}}/app",  ['exports', 'ember/resolver', 'ember/load-initializers', '{{modulePrefix}}/config/environment'], function(exports, _emberResolver, _emberLoadInitializers, _appConfigEnvironment) {

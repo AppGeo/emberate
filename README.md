@@ -78,11 +78,13 @@ Emberate exports a function with the following signature: `emberate(path, option
 * __options__ - optional, options hash with the available options listed below.
   - appName - 'app' by default, used as your application global.
   - outPath - where to save the generated file (can only be used if specifying a done callaback after options).
+  - debug - 'true' by default, used to optionally include the container-debug module. Set to false to exclude the module from your build.
   - modulePrefix - Name of the namespace used by ember to resolve modules, 'app' by default.
   - podModulePrefix - Name of the directory containing pod modules. `app/pods` by default.
   - templatePath - `lib/defaultTemplate.hbs` (in emberate project) by default. - *advanced options, only override if needed*
   - loaderPath - require path to the module loader used to connect commonjs modules with Ember's module system, defaults to a modified version of [ember-cli's loader](https://github.com/ember-cli/loader.js) - *advanced option, only override if needed*
   - resolverPath - require path for a custom Resolver. Defaults to the most current version of [ember-cli's resolver](https://github.com/ember-cli/ember-resolver) - *advanced option, only override if needed*
+  -  debugAdapterPath - require path for a custom debug Adapter, defaults to the current version included with [ember-cli's resolver](https://github.com/ember-cli/ember-resolver).
 * __callback__ - optional, returns once done writing, if used _outPath_ option above.
 
 The callback is only fired if you specify `outPath` in the options hash, e.g.
