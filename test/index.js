@@ -70,3 +70,19 @@ test('creates output that excludes debug modules when debug is false', function 
     });
   });
 });
+
+test('creates output that excludes addons when addonSupport is false', function (t) {
+  var generatedFile = path.join(__dirname, 'structures', 'all', '.index.js');
+  var expectedFile = path.join(__dirname, 'structures', 'all-structures-addon-false.js');
+  var instance = emberate(allStructure, {addonSupport: false}).pipe(fs.createWriteStream(generatedFile));
+
+  instance.on('finish', function () {
+    fs.readFile(generatedFile, function (err, data) {
+      var expected = fs.readFileSync(expectedFile);
+
+      t.notOk(err, 'No file reading errors');
+      t.deepEqual(data, expected, 'Generated is same as expected');
+      t.end();
+    });
+  });
+});

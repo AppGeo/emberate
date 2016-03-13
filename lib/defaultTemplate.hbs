@@ -90,7 +90,7 @@ define("{{modulePrefix}}/app",  ['exports', 'ember/resolver', 'ember/load-initia
   exports['default'] = App;
 });
 {{#each modules}}
-define("{{../modulePrefix}}/{{name}}", ["exports"], function(exports) {
+define("{{name}}", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('{{path}}'));
 });
 {{/each}}

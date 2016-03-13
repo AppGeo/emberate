@@ -72,14 +72,35 @@ define("app/app",  ['exports', 'ember/resolver', 'ember/load-initializers', 'app
 define("app/adapters/user", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('./adapters/user'));
 });
+define("app/components/bubble-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/app/components/bubble-chart'));
+});
 define("app/components/component-pod", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('./components/component-pod/component'));
+});
+define("app/components/horizontal-bar-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/app/components/horizontal-bar-chart'));
+});
+define("app/components/pie-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/app/components/pie-chart'));
+});
+define("app/components/scatter-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/app/components/scatter-chart'));
+});
+define("app/components/time-series-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/app/components/time-series-chart'));
+});
+define("app/components/vertical-bar-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/app/components/vertical-bar-chart'));
 });
 define("app/components/x-player", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('./components/x-player'));
 });
 define("app/helpers/ajax", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('./helpers/ajax'));
+});
+define("app/initializers/container-debug-adapter", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-resolver/app/initializers/container-debug-adapter'));
 });
 define("app/initializers/test", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('./initializers/test'));
@@ -117,6 +138,9 @@ define("app/serializers/user", ["exports"], function(exports) {
 define("app/services/account", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('./services/account'));
 });
+define("app/templates/components/chart-component", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/app/templates/components/chart-component.hbs'));
+});
 define("app/templates/components/component-pod", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('./components/component-pod/template.hbs'));
 });
@@ -125,5 +149,86 @@ define("app/templates/sidebar", ["exports"], function(exports) {
 });
 define("app/transforms/object", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('./transforms/object'));
+});
+define("ember-charts/components/bubble-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/components/bubble-chart'));
+});
+define("ember-charts/components/chart-component", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/components/chart-component'));
+});
+define("ember-charts/components/horizontal-bar-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/components/horizontal-bar-chart'));
+});
+define("ember-charts/components/pie-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/components/pie-chart'));
+});
+define("ember-charts/components/scatter-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/components/scatter-chart'));
+});
+define("ember-charts/components/time-series-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/components/time-series-chart'));
+});
+define("ember-charts/components/vertical-bar-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/components/vertical-bar-chart'));
+});
+define("ember-charts/mixins/axes", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/axes'));
+});
+define("ember-charts/mixins/colorable", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/colorable'));
+});
+define("ember-charts/mixins/floating-tooltip", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/floating-tooltip'));
+});
+define("ember-charts/mixins/formattable", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/formattable'));
+});
+define("ember-charts/mixins/has-time-series-rule", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/has-time-series-rule'));
+});
+define("ember-charts/mixins/legend", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/legend'));
+});
+define("ember-charts/mixins/no-margin-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/no-margin-chart'));
+});
+define("ember-charts/mixins/pie-legend", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/pie-legend'));
+});
+define("ember-charts/mixins/resize-handler", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/resize-handler'));
+});
+define("ember-charts/mixins/sortable-chart", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/sortable-chart'));
+});
+define("ember-charts/mixins/time-series-labeler", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/mixins/time-series-labeler'));
+});
+define("ember-charts/utils/group-by", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/utils/group-by'));
+});
+define("ember-charts/utils/label-trimmer", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/utils/label-trimmer'));
+});
+define("ember-resolver/container-debug-adapter", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-resolver/addon/container-debug-adapter'));
+});
+define("ember-resolver/index", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-resolver/addon/index'));
+});
+define("ember-resolver/resolver", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-resolver/addon/resolver'));
+});
+define("ember-resolver/utils/class-factory", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-resolver/addon/utils/class-factory'));
+});
+define("ember-resolver/utils/create", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-resolver/addon/utils/create'));
+});
+define("ember-resolver/utils/make-dictionary", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-resolver/addon/utils/make-dictionary'));
+});
+define("ember-resolver/utils/module-registry", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-resolver/addon/utils/module-registry'));
 });
 loader.require("app/app")["default"].create(es6RequireShim(appOpts));

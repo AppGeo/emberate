@@ -85,6 +85,8 @@ Emberate exports a function with the following signature: `emberate(path, option
   - loaderPath - require path to the module loader used to connect commonjs modules with Ember's module system, defaults to a modified version of [ember-cli's loader](https://github.com/ember-cli/loader.js) - *advanced option, only override if needed*
   - resolverPath - require path for a custom Resolver. Defaults to the most current version of [ember-cli's resolver](https://github.com/ember-cli/ember-resolver) - *advanced option, only override if needed*
   -  debugAdapterPath - require path for a custom debug Adapter, defaults to the current version included with [ember-cli's resolver](https://github.com/ember-cli/ember-resolver).
+  -  addonPath - `emberate-addons` by default, the path that ember addons will be installed into.
+  -  addonSupport - `true` by default, set to false to disable addon support
 * __callback__ - optional, returns once done writing, if used _outPath_ option above.
 
 The callback is only fired if you specify `outPath` in the options hash, e.g.
@@ -136,6 +138,12 @@ For ease of use with npm scripts and for quick testing.
     -m, --module-prefix [module-prefix]          Module prefix, a namespace for app modules
     -p, --pod-module-prefix [pod-module-prefix]  Pod Module Prefix, the directroy that the ember-resolver uses for pods
 ```
+
+### Ember Addons
+
+There is basic support for ember-addons. You should be able to npm install the addon, and assuming the published addon conforms to ember's addon standard, emberate will include the addon in your app bundle entry file.
+
+You can optionally exclude the addon support from your build by setting `addonSupport` to false in the emberate options. Since Ember Addons are normally written in es6, you will need to include a transpiler in your browserify bundle. The most simple way to do so is with the [babelify transform](https://github.com/babel/babelify).
 
 ### Via Grunt
 
