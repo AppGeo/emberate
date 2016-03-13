@@ -145,6 +145,10 @@ There is basic support for ember-addons. You should be able to npm install the a
 
 You can optionally exclude the addon support from your build by setting `addonSupport` to false in the emberate options. Since Ember Addons are normally written in es6, you will need to include a transpiler in your browserify bundle. The most simple way to do so is with the [babelify transform](https://github.com/babel/babelify).
 
+Addon support is stricty tied to the addon itself, and if the addon is installing dependencies via blueprints, you will have to manually add the dependency to your project. This includes any css assets, preprocessors, or vendor libs that would normally be included in the ember-cli build pipeline.
+
+Addon support is in very early stages, and will be further fleshed out as edge case issues are discovered. Please create an issue if you find an addon that does not work so that we can continue to find edge case issues and solve for them.
+
 ### Via Grunt
 
 ```js
