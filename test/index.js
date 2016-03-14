@@ -2,6 +2,7 @@ var emberate = require('../lib');
 var fs = require('fs');
 var path = require('path');
 var test = require('tape');
+var espree = require('espree');
 var allStructure = path.join(__dirname, 'structures', 'all');
 var minStructure = path.join(__dirname, 'structures', 'min');
 var podsAllStructure = path.join(__dirname, 'structures', 'pods-all');
@@ -86,3 +87,65 @@ test('creates output that excludes addons when addonSupport is false', function 
     });
   });
 });
+
+var testFiles = [
+  {
+    import: 'PortalContent',
+    expected: '../../../../ember-portal/addon/components/portal-content',
+    original: 'ember-portal/components/portal-content',
+    compiledFile: path.resolve('emberate-addons/ember-named-yields/addon/components/block-for/component.js'),
+    addonFile: path.resolve('node_modules/ember-named-yields/addon/components/block-for/component.js')
+  },
+  {
+    import: 'PortalFor',
+    expected: '../../../../ember-portal/addon/components/portal-for',
+    original: 'ember-portal/components/portal-for',
+    compiledFile: path.resolve('emberate-addons/ember-named-yields/addon/components/named-yield/component.js'),
+    addonFile: path.resolve('node_modules/ember-named-yields/addon/components/named-yield/component.js')
+  },
+  {
+    import: 'PortalContent',
+    expected: '../../addon/components/portal-content',
+    original: 'ember-portal/components/portal-content',
+    compiledFile: path.resolve('emberate-addons/ember-portal/app/components/portal-content.js'),
+    addonFile: path.resolve('node_modules/ember-portal/app/components/portal-content.js')
+  }
+];
+
+test('transpiles broken addon import statements', function(t) {
+  var generatedFile = path.resolve('emberate-addons/ember-named-yields/addon/components/block-for/component.js');
+  var instance = emberate(allStructure);
+  var parseOpts = {
+    ecmaVersion: 6,
+    sourceType: "module"
+  };
+
+  instance.on('finish', function() {
+    testFiles.forEach(function(test) {
+      var oldFile = fs.readFileSync(test.addonFile).toString();
+      var oldFileData = espree.parse(oldFile, parseOpts);
+      var oldImportNode = importNodeFor(oldFileData, test.import);
+      t.ok(oldImportNode, 'specified testing node found for import: '+test.import);
+      t.equal(test.original, oldImportNode.source.value, 'import source matches original value: '+test.original);
+
+
+      var newFile = fs.readFileSync(test.compiledFile).toString();
+      var newFileData = espree.parse(newFile, parseOpts);
+      var newImportNode = importNodeFor(newFileData, test.import);
+      t.ok(newImportNode, 'specified testing node found for import: '+test.import);
+      t.equal(test.expected, newImportNode.source.value, 'import source matches expected value: '+test.expected)
+    });
+    t.end();
+  })
+});
+
+function importNodeFor(data, importName){
+  var result = null;
+  data.body.forEach(function(node) {
+    var name = node.specifiers && node.specifiers[0].local.name;
+    if (node.type === 'ImportDeclaration' && importName === name) {
+      result = node;
+    }
+  });
+  return result;
+}
