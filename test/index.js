@@ -43,7 +43,7 @@ test('creates expected output with callback', function (t) {
 test('works with required dirs/files only', function (t) {
   var expectedMinFile = path.join(__dirname, 'structures', 'min-structures.js');
   var generatedMinFile = path.join(__dirname, 'structures', 'min', '.index.js');
-  var instance = emberate(minStructure).pipe(fs.createWriteStream(generatedMinFile));
+  var instance = emberate(minStructure, {addonSupport: false}).pipe(fs.createWriteStream(generatedMinFile));
 
   instance.on('finish', function () {
     fs.readFile(generatedMinFile, function (err, data) {
@@ -59,7 +59,7 @@ test('works with required dirs/files only', function (t) {
 test('creates output that excludes debug modules when debug is false', function (t) {
   var generatedFile = path.join(__dirname, 'structures', 'all', '.index.js');
   var expectedFile = path.join(__dirname, 'structures', 'all-structures-debug-false.js');
-  var instance = emberate(allStructure, {debug: false}).pipe(fs.createWriteStream(generatedFile));
+  var instance = emberate(allStructure, {debug: false, addonSupport: false}).pipe(fs.createWriteStream(generatedFile));
 
   instance.on('finish', function () {
     fs.readFile(generatedFile, function (err, data) {
