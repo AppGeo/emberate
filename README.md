@@ -86,7 +86,7 @@ Emberate exports a function with the following signature: `emberate(path, option
   - resolverPath - require path for a custom Resolver. Defaults to the most current version of [ember-cli's resolver](https://github.com/ember-cli/ember-resolver) - *advanced option, only override if needed*
   -  debugAdapterPath - require path for a custom debug Adapter, defaults to the current version included with [ember-cli's resolver](https://github.com/ember-cli/ember-resolver).
   -  addonPath - `emberate-addons` by default, the path that ember addons will be installed into.
-  -  addonSupport - `true` by default, set to false to disable addon support
+  -  addonSupport - `false` by default, set to true to enable addon support
 * __callback__ - optional, returns once done writing, if used _outPath_ option above.
 
 The callback is only fired if you specify `outPath` in the options hash, e.g.

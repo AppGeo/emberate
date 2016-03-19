@@ -11,7 +11,7 @@ var podsCustomStructure = path.join(__dirname, 'structures', 'pods-custom');
 test('creates expected output', function (t) {
   var generatedFile = path.join(__dirname, 'structures', 'all', '.index.js');
   var expectedFile = path.join(__dirname, 'structures', 'all-structures.js');
-  var instance = emberate(allStructure).pipe(fs.createWriteStream(generatedFile));
+  var instance = emberate(allStructure, {addonSupport: true}).pipe(fs.createWriteStream(generatedFile));
 
   instance.on('finish', function () {
     fs.readFile(generatedFile, function (err, data) {
@@ -28,7 +28,8 @@ test('creates expected output with callback', function (t) {
   var generatedFile = path.join(__dirname, 'structures', 'all', '.index.js');
   var expectedFile = path.join(__dirname, 'structures', 'all-structures.js');
   var instance = emberate(allStructure, {
-    outPath: generatedFile
+    outPath: generatedFile,
+    addonSupport: true
   }, function () {
     fs.readFile(generatedFile, function (err, data) {
       fs.readFile(expectedFile, function (err, expected){
@@ -114,7 +115,7 @@ var testFiles = [
 
 test('transpiles broken addon import statements', function(t) {
   var generatedFile = path.resolve('emberate-addons/ember-named-yields/addon/components/block-for/component.js');
-  var instance = emberate(allStructure);
+  var instance = emberate(allStructure, {addonSupport: true});
   var parseOpts = {
     ecmaVersion: 6,
     sourceType: "module"
