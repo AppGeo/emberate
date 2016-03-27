@@ -110,6 +110,13 @@ var testFiles = [
     original: 'ember-portal/components/portal-content',
     compiledFile: path.resolve('emberate-addons/ember-portal/app/components/portal-content.js'),
     addonFile: path.resolve('node_modules/ember-portal/app/components/portal-content.js')
+  },
+  {
+    import: 'default',
+    expected: '../../addon/components/ember-islands',
+    original: 'ember-islands/components/ember-islands',
+    compiledFile: path.resolve('emberate-addons/ember-islands/app/components/ember-islands.js'),
+    addonFile: path.resolve('node_modules/ember-islands/app/components/ember-islands.js')
   }
 ];
 
@@ -144,9 +151,14 @@ function importNodeFor(data, importName){
   var result = null;
   data.body.forEach(function(node) {
     var name = node.specifiers && node.specifiers[0].local.name;
-    if (node.type === 'ImportDeclaration' && importName === name) {
+    if (isImportNode(node) && importName === name) {
       result = node;
     }
   });
   return result;
+}
+
+function isImportNode(node) {
+  return node.type === 'ImportDeclaration' ||
+    (node.type === 'ExportNamedDeclaration' && node.declaration === null);
 }

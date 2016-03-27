@@ -99,6 +99,9 @@ define("app/components/bubble-chart", ["exports"], function(exports) {
 define("app/components/component-pod", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('./components/component-pod/component'));
 });
+define("app/components/ember-islands", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-islands/app/components/ember-islands'));
+});
 define("app/components/ember-wormhole", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-wormhole/app/components/ember-wormhole'));
 });
@@ -248,6 +251,15 @@ define("ember-charts/utils/group-by", ["exports"], function(exports) {
 });
 define("ember-charts/utils/label-trimmer", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-charts/addon/utils/label-trimmer'));
+});
+define("ember-getowner-polyfill/fake-owner", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-getowner-polyfill/addon/fake-owner'));
+});
+define("ember-getowner-polyfill/index", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-getowner-polyfill/addon/index'));
+});
+define("ember-islands/components/ember-islands", ["exports"], function(exports) {
+  exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-islands/addon/components/ember-islands'));
 });
 define("ember-named-yields/components/block-for", ["exports"], function(exports) {
   exports["default"] = es6RequireShim(require('../../../emberate-addons/ember-named-yields/addon/components/block-for/component'));
